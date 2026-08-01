@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Leaflet CSS */
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --background: #0c1220;
+  --foreground: #f0f4f8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-amber: #f59e0b;
+  --color-brand-amber-light: #fbbf24;
+  --color-brand-navy: #0c1220;
+  --color-brand-slate: #1e2d42;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Custom Leaflet marker styles */
+.tow-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+
+.tow-marker-inner {
+  width: 36px;
+  height: 36px;
+  background: #f59e0b;
+  border: 3px solid #1e2d42;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.tow-marker-inner.selected {
+  background: #ef4444;
+  border-color: #fff;
+}
+
+.tow-marker-inner svg {
+  transform: rotate(45deg);
+  width: 18px;
+  height: 18px;
+  color: #1e2d42;
+}
+
+/* Leaflet popup overrides */
+.leaflet-popup-content-wrapper {
+  background: #1e2d42;
+  color: #f0f4f8;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-popup-tip {
+  background: #1e2d42;
+}
+
+/* Smooth panel transitions */
+.info-panel-enter {
+  transform: translateX(100%);
+}
+
+.info-panel-enter-active {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
