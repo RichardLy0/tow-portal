@@ -1,0 +1,1240 @@
+{
+  "undefined": null,
+  "533 James St, Shafter, CA 93263, USA": {
+    "lat": 35.501618701533,
+    "lng": -119.275308889714
+  },
+  "30706 Imperial St, Shafter, CA 93263, USA": {
+    "lat": 35.456335351641,
+    "lng": -119.26941524359
+  },
+  "136 Allen Rd Ste.100 #1065, Bakersfield, CA 93314, USA": null,
+  "18007 Rosedale Hwy, Bakersfield, CA 93314, USA": {
+    "lat": 35.383410763385,
+    "lng": -119.200251749775
+  },
+  "5001 Stine Rd, Bakersfield, CA 93313, USA": {
+    "lat": 35.309419353489,
+    "lng": -119.056742281069
+  },
+  "34772 Lencioni Ave, Bakersfield, CA 93308, USA": {
+    "lat": 35.447391785574,
+    "lng": -119.084179619144
+  },
+  "Bakersfield, CA 93304, USA": null,
+  "1400 Washington St, Bakersfield, CA 93305, USA": {
+    "lat": 35.371482129021,
+    "lng": -118.976418600581
+  },
+  "3232 H St, Bakersfield, CA 93308, USA": {
+    "lat": 35.389005843841,
+    "lng": -119.020393619718
+  },
+  "6009 Lugene Ave, Bakersfield, CA 93313, USA": {
+    "lat": 35.300484559068,
+    "lng": -119.043035275017
+  },
+  "1004 Mount Vernon Ave, Bakersfield, CA 93307, USA": {
+    "lat": 35.365993508222,
+    "lng": -118.967588338743
+  },
+  "3410 Fruitvale Ave, Bakersfield, CA 93308, USA": {
+    "lat": 35.390726824751,
+    "lng": -119.074285676425
+  },
+  "8921 Campus Park Ct, Bakersfield, CA 93311, USA": {
+    "lat": 35.319456105775,
+    "lng": -119.101445250248
+  },
+  "3490 Weedpatch Hwy, Bakersfield, CA 93307, USA": {
+    "lat": 35.320912434675,
+    "lng": -118.914375812755
+  },
+  "10016 Rosedale Hwy, Bakersfield, CA 93312, USA": {
+    "lat": 35.383534349361,
+    "lng": -119.113342123548
+  },
+  "1999 Edison Hwy, Bakersfield, CA 93305, USA": {
+    "lat": 35.37220208394,
+    "lng": -118.972333337283
+  },
+  "2217 Coy Ln, Bakersfield, CA 93307, USA": {
+    "lat": 35.324332283142,
+    "lng": -118.999592135906
+  },
+  "2830 Wear St, Bakersfield, CA 93308, USA": {
+    "lat": 35.385470029494,
+    "lng": -119.078753790068
+  },
+  "377 Burnett Rd, Byron, GA 31008, USA": {
+    "lat": 32.644561866811,
+    "lng": -83.793084373674
+  },
+  "210 New Dunbar Rd, Byron, GA 31008, USA": {
+    "lat": 32.651432485367,
+    "lng": -83.752838814883
+  },
+  "2622 Powersville Rd, Byron, GA 31008, USA": {
+    "lat": 32.633499457484,
+    "lng": -83.775083820122
+  },
+  "790 Dunbar Rd, Byron, GA 31008, USA": {
+    "lat": 32.651369484554,
+    "lng": -83.72893437398
+  },
+  "6080 Lakeview Rd, Warner Robins, GA 31088, USA": {
+    "lat": 32.578372701313,
+    "lng": -83.708100351696
+  },
+  "1122a Watson Blvd, Warner Robins, GA 31093, USA": {
+    "lat": 32.618333334298,
+    "lng": -83.614129565294
+  },
+  "904 Russell Pkwy Box 7971, Warner Robins, GA 31088, USA": {
+    "lat": 32.594014584883,
+    "lng": -83.640013003358
+  },
+  "610 N Davis Dr, Warner Robins, GA 31093, USA": {
+    "lat": 32.636798392092,
+    "lng": -83.612835149774
+  },
+  "410 Story Rd, Warner Robins, GA 31093, USA": null,
+  "9039 GA-74, Macon, GA 31220, USA": null,
+  "4012 Kurt Dr, Macon, GA 31204, USA": {
+    "lat": 32.819777675661,
+    "lng": -83.702358250757
+  },
+  "1950 Emery Hwy, Macon, GA 31217, USA": {
+    "lat": 32.844803106712,
+    "lng": -83.592042386601
+  },
+  "1233 Watson Blvd, Warner Robins, GA 31093, USA": {
+    "lat": 32.618195488022,
+    "lng": -83.617929052523
+  },
+  "3738 Napier Ave #2753, Macon, GA 31204, USA": {
+    "lat": 32.851367395185,
+    "lng": -83.687933512003
+  },
+  "4904 Jeffersonville Rd, Macon, GA 31217, USA": {
+    "lat": 32.81898180302,
+    "lng": -83.524246508276
+  },
+  "314 Juniper Ln, Macon, GA 31220, USA": {
+    "lat": 32.883065497771,
+    "lng": -83.774054733848
+  },
+  "4372 Pio Nono Ave, Macon, GA 31206, USA": {
+    "lat": 32.783066066829,
+    "lng": -83.665491962204
+  },
+  "235 North St, Macon, GA 31206, USA": {
+    "lat": 32.810767742542,
+    "lng": -83.63095548412
+  },
+  "6001 Riverside Dr, Laredo, TX 78041, USA": {
+    "lat": 27.560256065657,
+    "lng": -99.509711129294
+  },
+  "8906 Mines Rd, Laredo, TX 78045, USA": {
+    "lat": 27.582431211148,
+    "lng": -99.509241396683
+  },
+  "13515 Mercury Dr, Laredo, TX 78045, USA": {
+    "lat": 27.69321439217,
+    "lng": -99.467199855211
+  },
+  "5000 Wilkinson Blvd, Charlotte, NC 28208, USA": {
+    "lat": 35.23145877054,
+    "lng": -80.921913791417
+  },
+  "2309 Lowell Rd, Gastonia, NC 28054, USA": {
+    "lat": 35.279217888314,
+    "lng": -81.133970129713
+  },
+  "6725 Brookshire Blvd, Charlotte, NC 28216, USA": {
+    "lat": 35.293197356616,
+    "lng": -80.916301044715
+  },
+  "9515 Hebron Commerce Dr, Charlotte, NC 28273, USA": {
+    "lat": 35.126755709483,
+    "lng": -80.890814012347
+  },
+  "3717 Northerly Rd, Charlotte, NC 28206, USA": {
+    "lat": 35.269085506006,
+    "lng": -80.835919388687
+  },
+  "191 Troxler Cir NW, Concord, NC 28027, USA": {
+    "lat": 35.41797587005,
+    "lng": -80.61913789191
+  },
+  "10531 Bailey Rd #2, Cornelius, NC 28031, USA": {
+    "lat": 35.457283855453,
+    "lng": -80.856640927107
+  },
+  "19000-A W Catawba Ave, Cornelius, NC 28031, USA": {
+    "lat": 35.471938109868,
+    "lng": -80.891515370088
+  },
+  "15515 Ewart Rd, Huntersville, NC 28078, USA": {
+    "lat": 35.424601934693,
+    "lng": -80.808403730066
+  },
+  "341 Wesleyan Dr, McAdenville, NC 28101, USA": {
+    "lat": 35.252338318707,
+    "lng": -81.078368371843
+  },
+  "3501 Gribble Rd, Matthews, NC 28104, USA": {
+    "lat": 35.08497177713,
+    "lng": -80.679266371629
+  },
+  "2801 Wilkinson Blvd, Charlotte, NC 28208, USA": {
+    "lat": 35.224091310062,
+    "lng": -80.887385724796
+  },
+  "613 E Second Ave, Gastonia, NC 28054, USA": {
+    "lat": 35.260696541663,
+    "lng": -81.17316007794
+  },
+  "8101 Bellhaven Blvd STE B, Charlotte, NC 28216, USA": {
+    "lat": 35.301337925151,
+    "lng": -80.93386613257
+  },
+  "936 Peachtree Rd, Charlotte, NC 28216, USA": {
+    "lat": 35.296754613176,
+    "lng": -80.884702191436
+  },
+  "801 Pineborough Rd, Charlotte, NC 28212, USA": {
+    "lat": 35.171798754956,
+    "lng": -80.750402228326
+  },
+  "3040 Rozzelles Ferry Rd Suite B, Charlotte, NC 28208, USA": {
+    "lat": 35.253551569387,
+    "lng": -80.871806562956
+  },
+  "3600 Brookshire Blvd, Charlotte, NC 28216, USA": {
+    "lat": 35.261317367575,
+    "lng": -80.877110924883
+  },
+  "5416 Mt Holly-Huntersville Rd B, Charlotte, NC 28216, USA": {
+    "lat": 35.335729581184,
+    "lng": -80.923597175636
+  },
+  "5712 Daphne Dr, Charlotte, NC 28269, USA": {
+    "lat": 35.330429696852,
+    "lng": -80.844594172268
+  },
+  "2909 Boxmeer Dr, Charlotte, NC 28269, USA": {
+    "lat": 35.275058280127,
+    "lng": -80.835482927339
+  },
+  "7603 Old Statesville Rd, Charlotte, NC 28269, USA": {
+    "lat": 35.325240333402,
+    "lng": -80.826906403686
+  },
+  "600 Gulf Dr, Charlotte, NC 28208, USA": {
+    "lat": 35.26825071287,
+    "lng": -80.897615460166
+  },
+  "4642 Wilkinson Blvd, Charlotte, NC 28208, USA": {
+    "lat": 35.228738517093,
+    "lng": -80.915579196889
+  },
+  "208 Midway Dr, Indian Trail, NC 28079, USA": {
+    "lat": 35.060268684215,
+    "lng": -80.660653636848
+  },
+  "9512 Northeast Pkwy, Matthews, NC 28105, USA": {
+    "lat": 35.138222213785,
+    "lng": -80.714351810389
+  },
+  "1365 Matthews-Mint Hill Rd, Matthews, NC 28105, USA": {
+    "lat": 35.118308630064,
+    "lng": -80.70039461979
+  },
+  "1551 Stallings Rd, Stallings, NC 28104, USA": {
+    "lat": 35.096982910457,
+    "lng": -80.676694801596
+  },
+  "9214 Monroe Rd, Charlotte, NC 28270, USA": {
+    "lat": 35.145955975445,
+    "lng": -80.743692920749
+  },
+  "5004 Rosemede Dr, Charlotte, NC 28227, USA": {
+    "lat": 35.194485657099,
+    "lng": -80.722572519805
+  },
+  "6712 Freedom Dr, Charlotte, NC 28214, USA": {
+    "lat": 35.276129214404,
+    "lng": -80.936733717681
+  },
+  "7254 Mt Holly Rd, Charlotte, NC 28214, USA": {
+    "lat": 35.28048904503,
+    "lng": -80.927567002632
+  },
+  "2412 Newberry St, Charlotte, NC 28208, USA": {
+    "lat": 35.231166286278,
+    "lng": -80.928962749013
+  },
+  "8201 Arrowridge Blvd Suite #200, Charlotte, NC 28273, USA": {
+    "lat": 35.135355380976,
+    "lng": -80.907807180074
+  },
+  "10660 S Tryon St, Charlotte, NC 28273, USA": {
+    "lat": 35.119101329199,
+    "lng": -80.954238844151
+  },
+  "4824 N Graham St, Charlotte, NC 28269, USA": {
+    "lat": 35.279512268967,
+    "lng": -80.806508138116
+  },
+  "1326 Ashby St, Charlotte, NC 28206, USA": {
+    "lat": 35.237606429691,
+    "lng": -80.829690020006
+  },
+  "5710 South Blvd, Charlotte, NC 28217, USA": {
+    "lat": 35.157917332944,
+    "lng": -80.876297397432
+  },
+  "7424 Orr Rd., Charlotte, NC 28213, USA": {
+    "lat": 35.268017544632,
+    "lng": -80.742222203233
+  },
+  "7035 E W.T. Harris Blvd, Charlotte, NC 28215, USA": {
+    "lat": 35.347450584098,
+    "lng": -80.844282663173
+  },
+  "3533 Robinson Cir, Charlotte, NC 28206, USA": {
+    "lat": 35.257958857435,
+    "lng": -80.811698942988
+  },
+  "4822 N Tryon St, Charlotte, NC 28213, USA": {
+    "lat": 35.258093845678,
+    "lng": -80.785546445833
+  },
+  "13170 W Glendale Ave, Butler, WI 53007, USA": {
+    "lat": 43.100511853032,
+    "lng": -88.075758580637
+  },
+  "15300 W Howard Ave #1432, New Berlin, WI 53151, USA": {
+    "lat": 42.973610888791,
+    "lng": -88.09286643306
+  },
+  "16622 W Rogers Dr, New Berlin, WI 53151, USA": {
+    "lat": 43.007706433705,
+    "lng": -88.121445425394
+  },
+  "508 Bluemound Rd, Waukesha, WI 53188, USA": {
+    "lat": 43.043401445435,
+    "lng": -88.229857568737
+  },
+  "10921 W Mitchell St, West Allis, WI 53214, USA": {
+    "lat": 43.011603969143,
+    "lng": -88.048500873001
+  },
+  "1306 W National Ave, Milwaukee, WI 53204, USA": {
+    "lat": 43.02326178885,
+    "lng": -87.928097766254
+  },
+  "6751 N Teutonia Ave, Milwaukee, WI 53209, USA": {
+    "lat": 43.14025096988,
+    "lng": -87.954413763831
+  },
+  "1434 S Muskego Ave, Milwaukee, WI 53204, USA": {
+    "lat": 43.016564483288,
+    "lng": -87.93344898535
+  },
+  "5277 W Beaver Creek Pkwy, Brown Deer, WI 53223, USA": {
+    "lat": 43.182938727862,
+    "lng": -87.976846529174
+  },
+  "3700 W Wells St, Milwaukee, WI 53208, USA": {
+    "lat": 43.040371265145,
+    "lng": -87.959695925463
+  },
+  "S76W17871 Janesville Rd Unit B, Muskego, WI 53150, USA": {
+    "lat": 42.906303249528,
+    "lng": -88.137530601224
+  },
+  "11412 W Brown Deer Rd, Milwaukee, WI 53224, USA": {
+    "lat": 43.177325142883,
+    "lng": -88.054685014008
+  },
+  "N91 W14010, Warren St, Menomonee Falls, WI 53051, USA": {
+    "lat": 43.1835561586,
+    "lng": -88.082559981444
+  },
+  "21289 Good Hope Rd, Lannon, WI 53046, USA": {
+    "lat": 43.148159836024,
+    "lng": -88.175278350705
+  },
+  "2437 N Holton St, Milwaukee, WI 53212, USA": {
+    "lat": 43.062725905072,
+    "lng": -87.90543100888
+  },
+  "7419 W Bradley Rd, Milwaukee, WI 53223, USA": {
+    "lat": 43.163220354387,
+    "lng": -88.00258109768
+  },
+  "3039 W 6 1/2 Mile Rd #117, Caledonia, WI 53108, USA": null,
+  "1933 E Kelly Lane, Cudahy, WI 53110, USA": {
+    "lat": 42.93381290715,
+    "lng": -87.884221793224
+  },
+  "5606 W Burnham St, West Allis, WI 53219, USA": {
+    "lat": 43.010239271475,
+    "lng": -87.982816197072
+  },
+  "11139 W Becher St, West Allis, WI 53227, USA": {
+    "lat": 43.006198123726,
+    "lng": -88.051056454708
+  },
+  "822 W Center St, Milwaukee, WI 53206, USA": {
+    "lat": 43.067669137089,
+    "lng": -87.921770162137
+  },
+  "2737 S 31st St, Milwaukee, WI 53215, USA": {
+    "lat": 42.994975183368,
+    "lng": -87.953166374725
+  },
+  "310 7Th Ave`, Newport, MN 55055, USA": {
+    "lat": 44.85555117496,
+    "lng": -92.997914877583
+  },
+  "3760 Flowerfield Rd, Circle Pines, MN 55014, USA": null,
+  "11316 Fergus St NE Unit F, Blaine, MN 55449, USA": {
+    "lat": 45.1741966044,
+    "lng": -93.229178266504
+  },
+  "9142 Davenport St NE, Blaine, MN 55449, USA": {
+    "lat": 45.136439952267,
+    "lng": -93.23040192467
+  },
+  "2367 119th Cir NE, Blaine, MN 55449, USA": {
+    "lat": 45.185376581878,
+    "lng": -93.20959361862
+  },
+  "2535 85th Ave NE, Blaine, MN 55449, USA": {
+    "lat": 45.124474941367,
+    "lng": -93.20606770245
+  },
+  "5110 Sunstream Ln, Woodbury, MN 55129, USA": {
+    "lat": 44.874293882476,
+    "lng": -92.920586130096
+  },
+  "475 Commerce Ct, Hastings, MN 55033, USA": {
+    "lat": 44.72285012254,
+    "lng": -92.844868227224
+  },
+  "1396 Concordia Ave, St Paul, MN 55104, USA": {
+    "lat": 44.951237034186,
+    "lng": -93.159397939651
+  },
+  "4787 Bald Eagle Ave, White Bear Lake, MN 55110, USA": {
+    "lat": 45.085987788421,
+    "lng": -93.015491954761
+  },
+  "2741 Geneva Ave N, Oakdale, MN 55128, USA": {
+    "lat": 44.988437624875,
+    "lng": -92.984621816829
+  },
+  "8421 22nd Ave S #305A, Bloomington, MN 55425, USA": {
+    "lat": 44.850300617941,
+    "lng": -93.241874883916
+  },
+  "4861 Biscayne Ave West, Eagan, MN 55123, USA": {
+    "lat": 44.779976667807,
+    "lng": -93.112419958295
+  },
+  "3670 Kennebec Dr, Eagan, MN 55122, USA": {
+    "lat": 44.826094830676,
+    "lng": -93.205631468314
+  },
+  "1431 Rice St Unit B, St Paul, MN 55117, USA": {
+    "lat": 44.983986225113,
+    "lng": -93.105950827324
+  },
+  "14 Acker St E, St Paul, MN 55117, USA": {
+    "lat": 44.963976957061,
+    "lng": -93.099158955273
+  },
+  "533 Randolph Ave, St Paul, MN 55102, USA": {
+    "lat": 44.926891470689,
+    "lng": -93.124831623929
+  },
+  "1441 Iglehart Ave, St Paul, MN 55104, USA": {
+    "lat": 44.949436154676,
+    "lng": -93.161551181069
+  },
+  "976 Bradford St, St Paul, MN 55114, USA": {
+    "lat": 44.969466198384,
+    "lng": -93.194220677159
+  },
+  "92 43rd Ave NE, Fridley, MN 55421, USA": {
+    "lat": 45.046317872707,
+    "lng": -93.268299493923
+  },
+  "817 Vandalia St, St Paul, MN 55114, USA": {
+    "lat": 44.965654004822,
+    "lng": -93.189102167757
+  },
+  "741 University Ave W, St Paul, MN 55104, USA": {
+    "lat": 44.955778296268,
+    "lng": -93.131497255943
+  },
+  "Please call, Minneapolis, MN 55413, USA": null,
+  "3920 Buck Owens Blvd, Bakersfield, CA 93308, USA": {
+    "lat": 35.39542935426,
+    "lng": -119.043114026741
+  },
+  "104 W Saunders St, Laredo, TX 78041, USA": {
+    "lat": 27.530620679901,
+    "lng": -99.495898603544
+  },
+  "8370 Mines Rd, Laredo, TX 78045, USA": {
+    "lat": 27.578215847691,
+    "lng": -99.507933339925
+  },
+  "306 Cavin Ave, Mt Holly, NC 28120, USA": {
+    "lat": 35.306313660607,
+    "lng": -81.017323650482
+  },
+  "114 E 28th St, Charlotte, NC 28206, USA": {
+    "lat": 35.246978748925,
+    "lng": -80.817789616839
+  },
+  "4000 Brookshire Blvd, Charlotte, NC 28216, USA": {
+    "lat": 35.264701168806,
+    "lng": -80.880948386277
+  },
+  "3356 Central Ave, Charlotte, NC 28205, USA": {
+    "lat": 35.216247153025,
+    "lng": -80.787495732604
+  },
+  "1107 Montana Ave, South Milwaukee, WI 53172, USA": {
+    "lat": 42.90697097914,
+    "lng": -87.863162892645
+  },
+  "W230S7085 Guthrie School Rd, Big Bend, WI 53103, USA": {
+    "lat": 42.916824358385,
+    "lng": -88.20926086283
+  },
+  "1656 Greeley St S, Stillwater, MN 55082, USA": {
+    "lat": 45.041815493184,
+    "lng": -92.820980971062
+  },
+  "771 Crystal Ave, Shoreview, MN 55126, USA": {
+    "lat": 45.062545280827,
+    "lng": -93.133359057551
+  },
+  "8580 Hastings St NE, Spring Lake Park, MN 55432, USA": null,
+  "729 Dwane St, South St Paul, MN 55075, USA": {
+    "lat": 44.898684117675,
+    "lng": -93.043779778328
+  },
+  "2127 Vermillion St, Hastings, MN 55033, USA": {
+    "lat": 44.722968246195,
+    "lng": -92.85101837714
+  },
+  "2355 Century Ave S, Woodbury, MN 55125, USA": {
+    "lat": 44.914307529959,
+    "lng": -92.984314143056
+  },
+  "1201 Frost Ave unit c, Maplewood, MN 55109, USA": {
+    "lat": 44.999299673528,
+    "lng": -93.048987364384
+  },
+  "1431 Dayton Ave, St Paul, MN 55104, USA": {
+    "lat": 44.947495319735,
+    "lng": -93.161047826878
+  },
+  "445 Minnesota St 15th Floor, St Paul, MN 55101, USA": {
+    "lat": 44.948437026302,
+    "lng": -93.093701804278
+  },
+  "4830 Wilkinson Blvd, Gastonia, NC 28056, USA": {
+    "lat": 35.254718060501,
+    "lng": -81.092131805259
+  },
+  "6415 Brookshire Blvd, Charlotte, NC 28214, USA": {
+    "lat": 35.289342293424,
+    "lng": -80.911266646229
+  },
+  "1834 W Walnut St, Milwaukee, WI 53205, USA": {
+    "lat": 43.052676763145,
+    "lng": -87.935715500475
+  },
+  "833 W Waterford Ave, Milwaukee, WI 53221, USA": {
+    "lat": 42.970113917367,
+    "lng": -87.922957431113
+  },
+  "1213 W Mallory Ave, Milwaukee, WI 53221, USA": {
+    "lat": 42.946500109693,
+    "lng": -87.92837692119
+  },
+  "7401 Dickman Trail, Inver Grove Heights, MN 55076, USA": {
+    "lat": 44.842757529892,
+    "lng": -93.017745603571
+  },
+  "3866 Hoffman Rd, White Bear Lake, MN 55110, USA": {
+    "lat": 45.058531412868,
+    "lng": -93.029972940811
+  },
+  "629 Jenks Ave E, St Paul, MN 55130, USA": {
+    "lat": 44.971211146772,
+    "lng": -93.072860577819
+  },
+  "105 Blanche Ave, Belmont, NC 28012, USA": {
+    "lat": 35.271634781685,
+    "lng": -81.032268283773
+  },
+  "1506 Buerkle Rd, Vadnais Heights, MN 55110, USA": {
+    "lat": 45.041068021293,
+    "lng": -93.03702098061
+  },
+  "846 Galtier St #2, St Paul, MN 55117, USA": {
+    "lat": 44.967152082012,
+    "lng": -93.110954813273
+  },
+  "1301 Jackson St, St Paul, MN 55117, USA": {
+    "lat": 44.979574290364,
+    "lng": -93.096482796279
+  },
+  "7th Ave and Southern Rd, Phoenix, AZ 85041, USA": {
+    "lat": 33.392244891016,
+    "lng": -112.08196148393
+  },
+  "2435 S 6th Ave, Phoenix, AZ 85003, USA": {
+    "lat": 33.424777145228,
+    "lng": -112.081158674051
+  },
+  "6512 N 27th Ave, Phoenix, AZ 85017, USA": {
+    "lat": 33.532320804619,
+    "lng": -112.116963700824
+  },
+  "3242 S 36th St #2, Phoenix, AZ 85040, USA": {
+    "lat": 33.418012633537,
+    "lng": -112.003947760561
+  },
+  "19820 N 7th St Ste 230-205, Phoenix, AZ 85024, USA": {
+    "lat": 33.665877480646,
+    "lng": -112.065692661015
+  },
+  "7001 W Southern Ave, Laveen Village, AZ 85339, USA": {
+    "lat": 33.391845601903,
+    "lng": -112.207544083183
+  },
+  "5723 N 31st Dr, Phoenix, AZ 85017, USA": {
+    "lat": 33.521535368599,
+    "lng": -112.126419452628
+  },
+  "1966 E Deer Valley Dr, Phoenix, AZ 85024, USA": {
+    "lat": 33.687729133059,
+    "lng": -112.04200773513
+  },
+  "6895 E Camelback Rd, Scottsdale, AZ 85251, USA": {
+    "lat": 33.502101710196,
+    "lng": -111.932808736085
+  },
+  "1824 S 19th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.430439049232,
+    "lng": -112.099956621222
+  },
+  "2530 West Campbell Ave, Phoenix, AZ 85017, USA": {
+    "lat": 33.502261279834,
+    "lng": -112.11365402665
+  },
+  "950 S 5th St, Phoenix, AZ 85004, USA": {
+    "lat": 33.438140586804,
+    "lng": -112.067342566952
+  },
+  "6200 S 16th St, Phoenix, AZ 85042, USA": {
+    "lat": 33.390657250167,
+    "lng": -112.047418283817
+  },
+  "6300 N 27th Ave, Phoenix, AZ 85017, USA": {
+    "lat": 33.529749113036,
+    "lng": -112.116963698848
+  },
+  "9444 N 19th Ave, Phoenix, AZ 85021, USA": {
+    "lat": 33.571190226305,
+    "lng": -112.099702578894
+  },
+  "8417 S 15th St, Phoenix, AZ 85042, USA": {
+    "lat": 33.370266446424,
+    "lng": -112.051150869854
+  },
+  "21818 N 21st Ave, Phoenix, AZ 85027, USA": {
+    "lat": 33.683995481627,
+    "lng": -112.104334447292
+  },
+  "4212 N 64th Dr, Phoenix, AZ 85033, USA": {
+    "lat": 33.497560372778,
+    "lng": -112.198042225519
+  },
+  "2002 N 35th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.469666669852,
+    "lng": -112.134508495172
+  },
+  "3426 W Lincoln St, Phoenix, AZ 85009, USA": {
+    "lat": 33.442377707821,
+    "lng": -112.132975898294
+  },
+  "6727 N 77th Dr, Glendale, AZ 85303, USA": {
+    "lat": 33.533897652681,
+    "lng": -112.225302864914
+  },
+  "2375 E Camelback Rd Ste 600-669, Phoenix, AZ 85016, USA": {
+    "lat": 33.509260251347,
+    "lng": -112.030680805295
+  },
+  "4600 E Washington St Ste 100A, Phoenix, AZ 85034, USA": {
+    "lat": 33.447689961139,
+    "lng": -111.980507533175
+  },
+  "2902 E Washington St, Phoenix, AZ 85034, USA": {
+    "lat": 33.448335710492,
+    "lng": -112.019239205022
+  },
+  "2401 W McDowell Rd, Phoenix, AZ 85009, USA": {
+    "lat": 33.46583529917,
+    "lng": -112.110947998527
+  },
+  "7755 E Evans Rd Ste 500, Scottsdale, AZ 85260, USA": {
+    "lat": 33.616443922991,
+    "lng": -111.912865515739
+  },
+  "116 S 30th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.447364172445,
+    "lng": -112.12390910589
+  },
+  "901 E Riley Dr, Avondale, AZ 85323, USA": {
+    "lat": 33.438902908274,
+    "lng": -112.338833846478
+  },
+  "1833 W Desert Cove Ave, Phoenix, AZ 85029, USA": {
+    "lat": 33.585657529397,
+    "lng": -112.098280207937
+  },
+  "6804 W Indian School Rd, Phoenix, AZ 85033, USA": {
+    "lat": 33.494899665759,
+    "lng": -112.204700715936
+  },
+  "3232 W Mohave St, Phoenix, AZ 85009, USA": {
+    "lat": 33.431509375004,
+    "lng": -112.128712270688
+  },
+  "3847 W Lane Ave, Phoenix, AZ 85051, USA": {
+    "lat": 33.552558576607,
+    "lng": -112.141787362783
+  },
+  "22020 N 21st Ave, Phoenix, AZ 85027, USA": {
+    "lat": 33.685828874351,
+    "lng": -112.104351918594
+  },
+  "648 Shady Ln, Elkview, WV 25071, USA": null,
+  "1020 6th Ave, St Albans, WV 25177, USA": {
+    "lat": 38.384013750148,
+    "lng": -81.826371039124
+  },
+  "3420 N 27th Ave, Phoenix, AZ 85017, USA": {
+    "lat": 33.488211905011,
+    "lng": -112.117120183473
+  },
+  "2940 W Lincoln St, Phoenix, AZ 85009, USA": {
+    "lat": 33.442265339911,
+    "lng": -112.122585670138
+  },
+  "2801 W Weldon Ave, Phoenix, AZ 85017, USA": {
+    "lat": 33.490972066215,
+    "lng": -112.118989245189
+  },
+  "4543 E University Dr, Phoenix, AZ 85034, USA": {
+    "lat": 33.421845000133,
+    "lng": -111.98384407829
+  },
+  "4001 E Broadway Rd, Phoenix, AZ 85040, USA": {
+    "lat": 33.407235187631,
+    "lng": -111.995295347811
+  },
+  "1245 E Jackson St, Phoenix, AZ 85034, USA": {
+    "lat": 33.445080586724,
+    "lng": -112.055503482967
+  },
+  "5137 W Pershing Ave, Glendale, AZ 85304, USA": {
+    "lat": 33.605641350346,
+    "lng": -112.169842336842
+  },
+  "1327 Hansford St, Charleston, WV 25301, USA": {
+    "lat": 38.348813654623,
+    "lng": -81.621127220118
+  },
+  "8609 Paradise Rd, Lamont, CA 93241, USA": {
+    "lat": 35.265116037033,
+    "lng": -118.909081377911
+  },
+  "1915 S Union Ave, Bakersfield, CA 93307, USA": {
+    "lat": 35.331900523917,
+    "lng": -119.003097806751
+  },
+  "4901 Planz Rd, Bakersfield, CA 93309, USA": {
+    "lat": 35.325018760627,
+    "lng": -119.059104791972
+  },
+  "2800 Gibson St, Bakersfield, CA 93308, USA": {
+    "lat": 35.385611857643,
+    "lng": -119.052016217774
+  },
+  "1905 Fern Tree Ct, Bakersfield, CA 93304, USA": {
+    "lat": 35.313515335534,
+    "lng": -119.024408058124
+  },
+  "2017 S Union Ave, Bakersfield, CA 93307, USA": {
+    "lat": 35.32941579469,
+    "lng": -119.003099393024
+  },
+  "2425 River Blvd, Bakersfield, CA 93305, USA": {
+    "lat": 35.395541266525,
+    "lng": -118.985088940971
+  },
+  "4408 Posada Ave, Bakersfield, CA 93309, USA": {
+    "lat": 35.330336557594,
+    "lng": -119.051455796647
+  },
+  "11001 La Cresenta Dr, Bakersfield, CA 93312, USA": {
+    "lat": 35.382878636293,
+    "lng": -119.121973902793
+  },
+  "3613 Gulf St # C, Bakersfield, CA 93308, USA": {
+    "lat": 35.394165752717,
+    "lng": -119.046624514795
+  },
+  "1100 Russell Pkwy, Warner Robins, GA 31088, USA": {
+    "lat": 32.594045054025,
+    "lng": -83.643761279519
+  },
+  "214 Ridge Point Way, Macon, GA 31220, USA": {
+    "lat": 32.832504133821,
+    "lng": -83.801619592512
+  },
+  "579 Woolfolk St, Macon, GA 31217, USA": {
+    "lat": 32.849576437048,
+    "lng": -83.614605106986
+  },
+  "2963 Joycliff Rd, Macon, GA 31211, USA": {
+    "lat": 32.878206168931,
+    "lng": -83.566223488026
+  },
+  "7522 NE Industrial Blvd, Macon, GA 31216, USA": {
+    "lat": 32.701438013111,
+    "lng": -83.660438527795
+  },
+  "4530 Columbus Rd, Macon, GA 31206, USA": {
+    "lat": 32.824272482697,
+    "lng": -83.716459045924
+  },
+  "1912 Elberta Rd, Warner Robins, GA 31093, USA": {
+    "lat": 32.632743864784,
+    "lng": -83.652850799892
+  },
+  "6168 Columbus Rd, Macon, GA 31217, USA": {
+    "lat": 32.810439475432,
+    "lng": -83.756818721502
+  },
+  "4910 Paz Ln, Laredo, TX 78046, USA": {
+    "lat": 27.441564904195,
+    "lng": -99.462284010355
+  },
+  "1702 Power Dr, Lowell, NC 28098, USA": {
+    "lat": 35.278212263612,
+    "lng": -81.092857439409
+  },
+  "651 Primrose Ln NW, Concord, NC 28027, USA": {
+    "lat": 35.405738742095,
+    "lng": -80.637616620178
+  },
+  "3317 Nevin Rd, Charlotte, NC 28269, USA": {
+    "lat": 35.282068371865,
+    "lng": -80.83419159261
+  },
+  "2819 Monroe Rd, Charlotte, NC 28205, USA": {
+    "lat": 35.204374093597,
+    "lng": -80.807059374657
+  },
+  "136 Green Dr, Gastonia, NC 28054, USA": {
+    "lat": 35.262440659573,
+    "lng": -81.142059015911
+  },
+  "701A E Davis Ave, Gastonia, NC 28054, USA": {
+    "lat": 35.262888376502,
+    "lng": -81.171766324959
+  },
+  "6735 Wilgrove Mint Hill Rd, Charlotte, NC 28227, USA": {
+    "lat": 35.205893230652,
+    "lng": -80.670288145368
+  },
+  "3623 Latrobe Dr Suite 110F, Charlotte, NC 28211, USA": {
+    "lat": 35.196590076045,
+    "lng": -80.798129592155
+  },
+  "11601-A Reames Rd, Charlotte, NC 28269, USA": {
+    "lat": 35.347385651527,
+    "lng": -80.828594828187
+  },
+  "6213 Freedom Dr, Charlotte, NC 28214, USA": {
+    "lat": 35.270765482664,
+    "lng": -80.93370627471
+  },
+  "8411 Old Statesville Rd, Charlotte, NC 28269, USA": {
+    "lat": 35.336712703519,
+    "lng": -80.824823441892
+  },
+  "7619 Old Statesville Rd, Charlotte, NC 28269, USA": {
+    "lat": 35.325481854703,
+    "lng": -80.82686887918
+  },
+  "4215 Nagle Dr, Indian Trail, NC 28079, USA": {
+    "lat": 35.067220517406,
+    "lng": -80.681956539487
+  },
+  "10931 E Independence Blvd suite n office b, Matthews, NC 28105, USA": {
+    "lat": 35.120723478792,
+    "lng": -80.699798860629
+  },
+  "8125 Woodscape Dr, Charlotte, NC 28212, USA": {
+    "lat": 35.160544316068,
+    "lng": -80.748802785912
+  },
+  "2708 Midland Ave, Charlotte, NC 28208, USA": {
+    "lat": 35.22583220683,
+    "lng": -80.904416105072
+  },
+  "9000 Moores Chapel Rd, Charlotte, NC 28214, USA": {
+    "lat": 35.274462611132,
+    "lng": -80.956096801602
+  },
+  "8044 Southway Rd, Charlotte, NC 28215, USA": {
+    "lat": 35.245296009688,
+    "lng": -80.739749299741
+  },
+  "2117 Beatties Ford Rd, Charlotte, NC 28216, USA": {
+    "lat": 35.263244016975,
+    "lng": -80.854732879179
+  },
+  "3804 N Graham St, Charlotte, NC 28206, USA": {
+    "lat": 35.268758018269,
+    "lng": -80.814701164069
+  },
+  "207 W Worthington Ave, Charlotte, NC 28203, USA": {
+    "lat": 35.212202957525,
+    "lng": -80.861064568907
+  },
+  "4024 Pine Grove Cir, Charlotte, NC 28206, USA": {
+    "lat": 35.269855416853,
+    "lng": -80.809391405849
+  },
+  "3201 The Plaza, Charlotte, NC 28205, USA": {
+    "lat": 35.240122692574,
+    "lng": -80.797646713318
+  },
+  "3606 Jessie St, Charlotte, NC 28206, USA": {
+    "lat": 35.267616941433,
+    "lng": -80.836450314191
+  },
+  "12401 W Custer Ave, Butler, WI 53007, USA": {
+    "lat": 43.115028120148,
+    "lng": -88.065967224302
+  },
+  "3200 9th Ave, South Milwaukee, WI 53172, USA": {
+    "lat": 42.899606941203,
+    "lng": -87.859407246539
+  },
+  "4550 S Moorland Rd, New Berlin, WI 53151, USA": null,
+  "9520 N 107th St, Milwaukee, WI 53224, USA": {
+    "lat": 43.190799273917,
+    "lng": -88.043718967411
+  },
+  "7000 N Teutonia Ave, Milwaukee, WI 53209, USA": {
+    "lat": 43.145052796399,
+    "lng": -87.955445954718
+  },
+  "124 Edgar Ave, South Milwaukee, WI 53172, USA": {
+    "lat": 42.929339964764,
+    "lng": -87.862936052538
+  },
+  "N112W16660 Mequon Rd, Germantown, WI 53022, USA": {
+    "lat": 43.221085131661,
+    "lng": -88.115632776081
+  },
+  "5620 W Center St, Milwaukee, WI 53210, USA": {
+    "lat": 43.068065046692,
+    "lng": -87.983556607916
+  },
+  "2008 N Holton St, Milwaukee, WI 53212, USA": {
+    "lat": 43.056946529922,
+    "lng": -87.905250290101
+  },
+  "N14W28276 Silvernail Rd, Pewaukee, WI 53072, USA": {
+    "lat": 43.049724961215,
+    "lng": -88.309701194203
+  },
+  "3162 S 29th St, Milwaukee, WI 53215, USA": {
+    "lat": 42.987328321218,
+    "lng": -87.950609342862
+  },
+  "1601 N Chicago Ave, South Milwaukee, WI 53172, USA": {
+    "lat": 42.916046359749,
+    "lng": -87.85938909622
+  },
+  "3811 W Lincoln Ave, Milwaukee, WI 53215, USA": {
+    "lat": 43.00292232579,
+    "lng": -87.961851208805
+  },
+  "8330 N Raynor Ave, Franksville, WI 53126, USA": {
+    "lat": 42.832940712646,
+    "lng": -88.070327426807
+  },
+  "805 W Puetz Rd, Oak Creek, WI 53154, USA": {
+    "lat": 42.886846582037,
+    "lng": -87.9255697764
+  },
+  "7240 W Southridge Dr, Greenfield, WI 53220, USA": {
+    "lat": 42.956860898024,
+    "lng": -88.003698679039
+  },
+  "2002 W Bender Rd, Glendale, WI 53209, USA": {
+    "lat": 43.130321201134,
+    "lng": -87.936631889366
+  },
+  "2021 W Forest Home Ave, Milwaukee, WI 53215, USA": {
+    "lat": 43.006456123869,
+    "lng": -87.938502499424
+  },
+  "902 W Bruce St, Milwaukee, WI 53204, USA": {
+    "lat": 43.025371536693,
+    "lng": -87.922632724078
+  },
+  "1425 Minnehaha Ave E Suite 600095, St Paul, MN 55106, USA": {
+    "lat": 44.963167288873,
+    "lng": -93.040359519459
+  },
+  "7093 21st Ave N, Centerville, MN 55038, USA": {
+    "lat": 45.163732789523,
+    "lng": -93.035790060171
+  },
+  "8301 Sunset Rd NE Ste 4, Spring Lake Park, MN 55432, USA": {
+    "lat": 45.11919099799,
+    "lng": -93.231549644609
+  },
+  "5711 Camden Ave N, Brooklyn Center, MN 55430, USA": {
+    "lat": 45.058616820798,
+    "lng": -93.288740762211
+  },
+  "610 4th St, St Paul Park, MN 55071, USA": {
+    "lat": 44.847182361833,
+    "lng": -92.996450868687
+  },
+  "10500 Courthouse Blvd, Inver Grove Heights, MN 55077, USA": null,
+  "400 Selby Ave, St Paul, MN 55102, USA": {
+    "lat": 44.946492705112,
+    "lng": -93.115404043386
+  },
+  "266 Burgess St, St Paul, MN 55117, USA": {
+    "lat": 44.968339702675,
+    "lng": -93.112447321482
+  },
+  "7500 150th St W, Apple Valley, MN 55124, USA": {
+    "lat": 44.731833544117,
+    "lng": -93.221286425455
+  },
+  "3621 Quail Ave N, Robbinsdale, MN 55422, USA": {
+    "lat": 45.020912449118,
+    "lng": -93.342847795105
+  },
+  "2641 Cole Ave SE, Minneapolis, MN 55414, USA": {
+    "lat": 44.984700862643,
+    "lng": -93.216568051482
+  },
+  "1605 Cliff Rd E, Burnsville, MN 55337, USA": {
+    "lat": 44.790406568521,
+    "lng": -93.251686380462
+  },
+  "3744 15th Ave S, Minneapolis, MN 55407, USA": {
+    "lat": 44.935128737483,
+    "lng": -93.253742589516
+  },
+  "925 Bernard St, Bakersfield, CA 93305, USA": {
+    "lat": 35.390565953357,
+    "lng": -118.984553345108
+  },
+  "8916 Jose, Ramos Ave, Bakersfield, CA 93307, USA": null,
+  "3307 San Dario Ave, Laredo, TX 78040, USA": {
+    "lat": 27.529292799069,
+    "lng": -99.502444061945
+  },
+  "3400 State Hwy 49, Harrisburg, NC 28075, USA": {
+    "lat": 35.329046911335,
+    "lng": -80.633252697826
+  },
+  "10531 Bailey Rd #1, Cornelius, NC 28031, USA": {
+    "lat": 35.457283855453,
+    "lng": -80.856640927107
+  },
+  "3840 Matthews-Indian Trail Rd, Matthews, NC 28104, USA": {
+    "lat": 35.090546774973,
+    "lng": -80.673470774377
+  },
+  "821 Louise Ave Suite 2, Charlotte, NC 28204, USA": {
+    "lat": 35.222389991323,
+    "lng": -80.821365974184
+  },
+  "224 Yeoman Rd, Charlotte, NC 28217, USA": {
+    "lat": 35.182494956665,
+    "lng": -80.882827064971
+  },
+  "3419 S Tryon St, Charlotte, NC 28217, USA": {
+    "lat": 35.196931259654,
+    "lng": -80.87630083188
+  },
+  "2015 Ayrsley Town Blvd #202, Charlotte, NC 28273, USA": {
+    "lat": 35.137917955596,
+    "lng": -80.93163456324
+  },
+  "8517 W Kaul Ave, Milwaukee, WI 53225, USA": {
+    "lat": 43.128541491172,
+    "lng": -88.017510653309
+  },
+  "413 6th St N, Hudson, WI 54016, USA": {
+    "lat": 44.993174761173,
+    "lng": -92.757175551783
+  },
+  "1303 S Frontage Rd Ste 272, Hastings, MN 55033, USA": {
+    "lat": 44.736949701714,
+    "lng": -92.876207091321
+  },
+  "289 W Lafayette Frontage Rd, St Paul, MN 55107, USA": {
+    "lat": 44.937282108557,
+    "lng": -93.074771620683
+  },
+  "44 Acker St W, St Paul, MN 55117, USA": {
+    "lat": 44.963987687235,
+    "lng": -93.10047800803
+  },
+  "7327 Old Statesville Rd, Charlotte, NC 28269, USA": {
+    "lat": 35.32108007016,
+    "lng": -80.828424936039
+  },
+  "4043 S Pennsylvania Ave, St Francis, WI 53235, USA": {
+    "lat": 42.970927528453,
+    "lng": -87.879809715329
+  },
+  "1019 S 30th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.43861357032,
+    "lng": -112.123735415177
+  },
+  "1940 W Durango St, Phoenix, AZ 85009, USA": {
+    "lat": 33.429543138288,
+    "lng": -112.100764341643
+  },
+  "1433 S 39th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.434671082767,
+    "lng": -112.143174679213
+  },
+  "4540 W Glendale Ave, Glendale, AZ 85301, USA": {
+    "lat": 33.538500853802,
+    "lng": -112.15834493619
+  },
+  "3440 W Lincoln St, Phoenix, AZ 85009, USA": {
+    "lat": 33.442382387126,
+    "lng": -112.133269057559
+  },
+  "2532 W Broadway Rd, Phoenix, AZ 85041, USA": {
+    "lat": 33.406790005226,
+    "lng": -112.112843360568
+  },
+  "1107 W Magnolia St, Phoenix, AZ 85007, USA": {
+    "lat": 33.424319138739,
+    "lng": -112.086913776798
+  },
+  "4202 W Van Buren St #59, Phoenix, AZ 85009, USA": {
+    "lat": 33.451441182157,
+    "lng": -112.14943472247
+  },
+  "8240 W Trafalgar Ave, Phoenix, AZ 85033, USA": {
+    "lat": 33.491265811638,
+    "lng": -112.23640699096
+  },
+  "6430 W Orangewood Ave, Glendale, AZ 85301, USA": {
+    "lat": 33.545708045969,
+    "lng": -112.198682562419
+  },
+  "4350 S 18th Ave, Phoenix, AZ 85041, USA": {
+    "lat": 33.407634533873,
+    "lng": -112.097316810808
+  },
+  "4819 W Osborn Rd, Phoenix, AZ 85031, USA": {
+    "lat": 33.487604141302,
+    "lng": -112.162418717053
+  },
+  "3523 W Salter Dr, Glendale, AZ 85308, USA": {
+    "lat": 33.682062541773,
+    "lng": -112.135398849565
+  },
+  "888 E Clinton St, Phoenix, AZ 85020, USA": {
+    "lat": 33.583378383455,
+    "lng": -112.061701250157
+  },
+  "20265 N 59th Ave Unit B, Glendale, AZ 85308, USA": {
+    "lat": 33.669394920785,
+    "lng": -112.186662601896
+  },
+  "21831 N 27th Ave #4, Phoenix, AZ 85027, USA": {
+    "lat": 33.684113948248,
+    "lng": -112.117337284843
+  },
+  "22570 N 21st Ave, Phoenix, AZ 85027, USA": {
+    "lat": 33.690757238086,
+    "lng": -112.104377318307
+  },
+  "1505 6th Ave, Charleston, WV 25387, USA": {
+    "lat": 38.369397026629,
+    "lng": -81.661032874204
+  },
+  "1201 Main Ave, Nitro, WV 25143, USA": null,
+  "2213 E Dupont Ave, Belle, WV 25015, USA": {
+    "lat": 38.220924877881,
+    "lng": -81.52235216262
+  },
+  "2209 6th Ave, Charleston, WV 25387, USA": {
+    "lat": 38.374907689375,
+    "lng": -81.67305721949
+  },
+  "3428 Chesterfield Ave, Charleston, WV 25304, USA": {
+    "lat": 38.326175717919,
+    "lng": -81.600549153791
+  },
+  "1302 E Indian School Rd, Phoenix, AZ 85014, USA": {
+    "lat": 33.494785171267,
+    "lng": -112.054141448807
+  },
+  "8447 W Osborn Rd, Phoenix, AZ 85037, USA": {
+    "lat": 33.486984590749,
+    "lng": -112.241562189814
+  },
+  "1720 S 27th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.431577076014,
+    "lng": -112.117299903057
+  },
+  "7220 W Monte Vista Rd, Phoenix, AZ 85035, USA": {
+    "lat": 33.470598512772,
+    "lng": -112.214022882264
+  },
+  "2450 S 35th Ave, Phoenix, AZ 85009, USA": {
+    "lat": 33.435353800568,
+    "lng": -112.134681661848
+  },
+  "1020 Crescent Rd, Charleston, WV 25302, USA": {
+    "lat": 38.361334376138,
+    "lng": -81.63287328826
+  }
+}

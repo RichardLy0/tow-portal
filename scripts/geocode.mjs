@@ -2,15 +2,14 @@
  * Geocoding Pre-processor
  *
  * Reads the competitor CSV, geocodes all business addresses using
- * the free Nominatim (OpenStreetMap) API, and saves the result to
- * public/data/businesses.json for use by the Next.js dashboard.
+ * the US Census Bureau Geocoder (free, no rate limits, batch support),
+ * and saves the result to public/data/businesses.json for use by the
+ * Next.js dashboard.
  *
  * Usage:
  *   node scripts/geocode.mjs
  *
- * Note: Nominatim rate-limits to 1 request/second. With ~100 businesses,
- * this script takes ~2 minutes to complete. Results are cached so
- * subsequent runs are instant.
+ * Results are cached so subsequent runs are instant.
  */
 
 import fs from 'fs';
@@ -25,13 +24,11 @@ const CSV_PATH = path.join(PROJECT_ROOT, '..', 'Cleaned Pricing Quote Dataset.cs
 const OUTPUT_PATH = path.join(PROJECT_ROOT, 'public', 'data', 'businesses.json');
 const CACHE_PATH = path.join(PROJECT_ROOT, 'public', 'data', 'geocode-cache.json');
 
+const CENSUS_BATCH_URL = 'https://geocoding.geo.census.gov/geocoder/locations/addressbatch';
+const BATCH_SIZE = 1000;
+
 // ─── CSV Parser ────────────────────────────────────────────────────────────────
 
-/**
- * Minimal CSV parser that handles:
- * - Quoted fields containing commas, newlines, and escaped quotes
- * - UTF-8 encoding
- */
 function parseCSV(content) {
   const rows = [];
   let headers = null;
@@ -48,7 +45,6 @@ function parseCSV(content) {
 
       if (inQuote) {
         if (ch === '"') {
-          // Check for escaped quote
           if (content[i + 1] === '"') {
             field += '"';
             i += 2;
@@ -83,7 +79,6 @@ function parseCSV(content) {
       }
     }
 
-    // Last field at EOF
     if (i === len && (field || row.length > 0)) {
       row.push(field);
     }
@@ -94,9 +89,7 @@ function parseCSV(content) {
       headers = row;
     } else {
       const obj = {};
-      headers.forEach((h, idx) => {
-        obj[h] = row[idx] ?? '';
-      });
+      headers.forEach((h, idx) => { obj[h] = row[idx] ?? ''; });
       rows.push(obj);
     }
   }
@@ -104,9 +97,86 @@ function parseCSV(content) {
   return rows;
 }
 
-// ─── Geocoding ─────────────────────────────────────────────────────────────────
+// ─── Address parsing ───────────────────────────────────────────────────────────
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+/**
+ * Splits a full address string like "123 Main St, Springfield, IL 62701, USA"
+ * into { street, city, state, zip } for the Census batch API.
+ */
+function splitAddress(fullAddress) {
+  const cleaned = fullAddress.replace(/, USA$/, '').trim();
+  // Match: street, city, STATE ZIP  (e.g. "123 Main St, Springfield, IL 62701")
+  const match = cleaned.match(/^(.+),\s*(.+),\s*([A-Z]{2})\s*(\d{5}(?:-\d{4})?)$/);
+  if (match) {
+    return { street: match[1].trim(), city: match[2].trim(), state: match[3].trim(), zip: match[4].trim() };
+  }
+  // Fallback: put everything in street, leave rest blank
+  return { street: cleaned, city: '', state: '', zip: '' };
+}
+
+// ─── Census Batch Geocoder ─────────────────────────────────────────────────────
+
+/**
+ * Sends up to 1000 addresses to the Census batch geocoder.
+ * Returns a map of { id -> { lat, lng } | null }
+ */
+async function censusBatchGeocode(addressMap) {
+  const entries = Object.entries(addressMap);
+  if (entries.length === 0) return {};
+
+  // Build CSV payload: Unique ID, Street address, City, State, ZIP
+  const lines = entries.map(([id, addr]) => {
+    const { street, city, state, zip } = splitAddress(addr);
+    const esc = (s) => `"${s.replace(/"/g, '""')}"`;
+    return `${id},${esc(street)},${esc(city)},${esc(state)},${esc(zip)}`;
+  });
+  const csvPayload = lines.join('\n');
+
+  const formData = new FormData();
+  formData.append('addressFile', new Blob([csvPayload], { type: 'text/plain' }), 'addresses.csv');
+  formData.append('benchmark', 'Public_AR_Current');
+  formData.append('returntype', 'locations');
+
+  const res = await fetch(CENSUS_BATCH_URL, { method: 'POST', body: formData });
+
+  if (!res.ok) {
+    throw new Error(`Census API HTTP ${res.status}: ${await res.text()}`);
+  }
+
+  const text = await res.text();
+  const results = {};
+
+  for (const line of text.split('\n')) {
+    if (!line.trim()) continue;
+    // Response is quoted CSV: "ID","InputAddr","Match","Exact","MatchedAddr","lon,lat","TigerID","Side"
+    // Must parse as proper CSV since address fields contain commas
+    const fields = [];
+    const fieldRe = /"([^"]*)"/g;
+    let m;
+    while ((m = fieldRe.exec(line)) !== null) fields.push(m[1]);
+
+    const id = fields[0];
+    const matchStatus = fields[2]; // "Match" or "No_Match"
+    const coordStr = fields[5];    // "-83.5242,32.8189"
+
+    if (!id) continue;
+
+    if (matchStatus === 'Match' && coordStr) {
+      const commaIdx = coordStr.indexOf(',');
+      const lng = parseFloat(coordStr.slice(0, commaIdx));
+      const lat = parseFloat(coordStr.slice(commaIdx + 1));
+      if (!isNaN(lat) && !isNaN(lng)) {
+        results[id] = { lat, lng };
+        continue;
+      }
+    }
+    results[id] = null;
+  }
+
+  return results;
+}
+
+// ─── Cache helpers ─────────────────────────────────────────────────────────────
 
 function loadCache() {
   if (fs.existsSync(CACHE_PATH)) {
@@ -117,31 +187,8 @@ function loadCache() {
 }
 
 function saveCache(cache) {
+  fs.mkdirSync(path.dirname(CACHE_PATH), { recursive: true });
   fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
-}
-
-async function geocode(address, cache) {
-  if (address in cache) return cache[address];
-
-  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1&countrycodes=us`;
-
-  try {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'TowDeputyPricingPortal/1.0' },
-    });
-    const data = await res.json();
-    if (data.length > 0) {
-      const coords = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
-      cache[address] = coords;
-      return coords;
-    }
-    cache[address] = null;
-    return null;
-  } catch (err) {
-    console.error(`  ✗ Nominatim error: ${err.message}`);
-    cache[address] = null;
-    return null;
-  }
 }
 
 // ─── Number parsing ────────────────────────────────────────────────────────────
@@ -158,6 +205,7 @@ async function main() {
   console.log('');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('  Tow Deputy — Competitor Data Geocoding Script  ');
+  console.log('  (US Census Bureau Geocoder — free, no limits)  ');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('');
 
@@ -195,44 +243,58 @@ async function main() {
 
   const uniqueAddresses = [...new Set(businesses.map((b) => b.address).filter(Boolean))];
   console.log(`✓ ${uniqueAddresses.length} unique addresses to geocode`);
-  console.log('');
 
   const cache = loadCache();
-  const alreadyCached = uniqueAddresses.filter((a) => a in cache).length;
-  const toGeocode = uniqueAddresses.filter((a) => !(a in cache)).length;
+  const uncached = uniqueAddresses.filter((a) => !(a in cache));
+  const alreadyCached = uniqueAddresses.length - uncached.length;
 
-  console.log(`  → ${alreadyCached} addresses already cached`);
-  console.log(`  → ${toGeocode} addresses need geocoding`);
-  if (toGeocode > 0) {
-    const estimatedSeconds = toGeocode * 1.2;
-    console.log(`  → Estimated time: ~${Math.ceil(estimatedSeconds)}s (Nominatim rate limit: 1 req/sec)`);
-  }
+  console.log(`  → ${alreadyCached} already cached, ${uncached.length} need geocoding`);
   console.log('');
 
-  let geocoded = 0;
-  let failed = 0;
+  if (uncached.length > 0) {
+    // Build id->address map for batch requests
+    // Use index as ID so we can match results back
+    const idToAddress = {};
+    uncached.forEach((addr, i) => { idToAddress[String(i)] = addr; });
 
-  for (let i = 0; i < uniqueAddresses.length; i++) {
-    const address = uniqueAddresses[i];
-    const cached = address in cache;
-
-    if (!cached) {
-      process.stdout.write(`  [${i + 1}/${uniqueAddresses.length}] Geocoding: ${address.substring(0, 60)}...`);
-      await sleep(1100); // Nominatim rate limit
+    const batches = [];
+    const ids = Object.keys(idToAddress);
+    for (let i = 0; i < ids.length; i += BATCH_SIZE) {
+      const batchIds = ids.slice(i, i + BATCH_SIZE);
+      const batch = {};
+      batchIds.forEach((id) => { batch[id] = idToAddress[id]; });
+      batches.push(batch);
     }
 
-    const coords = await geocode(address, cache);
+    console.log(`  Sending ${batches.length} batch request(s) to US Census Geocoder...`);
 
-    if (!cached) {
-      if (coords) {
-        console.log(` ✓ (${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)})`);
-        geocoded++;
-        saveCache(cache); // Save incrementally in case of interruption
-      } else {
-        console.log(' ✗ not found');
-        failed++;
+    let geocoded = 0;
+    let failed = 0;
+
+    for (let b = 0; b < batches.length; b++) {
+      if (batches.length > 1) {
+        process.stdout.write(`  Batch ${b + 1}/${batches.length}...`);
+      }
+
+      const batchResults = await censusBatchGeocode(batches[b]);
+
+      for (const [id, coords] of Object.entries(batchResults)) {
+        const address = idToAddress[id];
+        cache[address] = coords;
+        if (coords) geocoded++;
+        else failed++;
+      }
+
+      if (batches.length > 1) {
+        console.log(` done (${Object.values(batchResults).filter(Boolean).length} matched)`);
       }
     }
+
+    saveCache(cache);
+
+    console.log('');
+    console.log(`  ✓ ${geocoded} addresses geocoded successfully`);
+    if (failed > 0) console.log(`  ✗ ${failed} addresses not found`);
   }
 
   // Assign coordinates to businesses
@@ -246,7 +308,9 @@ async function main() {
     }
   });
 
-  // Save output
+  // Delete old businesses.json so the API re-reads the fresh data
+  if (fs.existsSync(OUTPUT_PATH)) fs.unlinkSync(OUTPUT_PATH);
+
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(businesses, null, 2));
 
@@ -254,10 +318,7 @@ async function main() {
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log(`✓ ${businesses.length} businesses saved to public/data/businesses.json`);
   console.log(`  → ${mapped} mapped (have coordinates)`);
-  console.log(`  → ${businesses.length - mapped} unmapped (address not resolved)`);
-  if (toGeocode > 0) {
-    console.log(`  → ${geocoded} newly geocoded / ${failed} failed`);
-  }
+  console.log(`  → ${businesses.length - mapped} unmapped`);
   console.log('');
   console.log('  Start your dev server: npm run dev');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
