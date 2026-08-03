@@ -9,10 +9,26 @@ interface LeafletMapProps {
   onMarkerClick: (business: Business) => void;
 }
 
-// Tow truck SVG for map marker
-function towTruckSVG(selected: boolean): string {
+// Tow truck SVG for map marker with optional price label
+function towTruckSVG(selected: boolean, price?: number | null): string {
   const bg = selected ? '#ef4444' : '#f59e0b';
   const border = selected ? '#ffffff' : '#1e2d42';
+  const priceLabel =
+    price != null
+      ? `<div style="
+          margin-top:4px;
+          background:rgba(6,13,26,0.88);
+          border:1px solid ${selected ? '#ef4444' : '#f59e0b'};
+          border-radius:6px;
+          padding:2px 6px;
+          font-size:11px;
+          font-weight:700;
+          color:${selected ? '#ef4444' : '#f59e0b'};
+          white-space:nowrap;
+          line-height:1.4;
+          box-shadow:0 2px 6px rgba(0,0,0,0.5);
+        ">$${price.toFixed(0)}</div>`
+      : '';
   return `
     <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
       <div style="
@@ -30,6 +46,7 @@ function towTruckSVG(selected: boolean): string {
           <path d="M3 4a1 1 0 00-1 1v7a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1v-1h3a1 1 0 00.8-.4l2-2.667A1 1 0 0017 7h-3V5a1 1 0 00-1-1H3z"/>
         </svg>
       </div>
+      ${priceLabel}
     </div>
   `;
 }
@@ -40,6 +57,7 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
   const mapInstanceRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markersRef = useRef<Map<string, any>>(new Map());
+  const hasFitBoundsRef = useRef(false);
 
   const validBusinesses = businesses.filter(
     (b) => b.lat !== null && b.lng !== null
@@ -86,9 +104,9 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
       // Add markers
       validBusinesses.forEach((biz) => {
         const icon = L.divIcon({
-          html: towTruckSVG(false),
+          html: towTruckSVG(false, biz.totalQuote),
           className: 'tow-marker',
-          iconSize: [38, 46],
+          iconSize: [38, 56],
           iconAnchor: [19, 46],
           popupAnchor: [0, -46],
         });
@@ -111,6 +129,7 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
         markersRef.current.clear();
+        hasFitBoundsRef.current = false;
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -122,11 +141,12 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
     import('leaflet').then((L) => {
       markersRef.current.forEach((marker, id) => {
         const isSelected = id === selectedId;
+        const biz = businesses.find((b) => b.id === id);
         marker.setIcon(
           L.divIcon({
-            html: towTruckSVG(isSelected),
+            html: towTruckSVG(isSelected, biz?.totalQuote),
             className: 'tow-marker',
-            iconSize: [38, 46],
+            iconSize: [38, 56],
             iconAnchor: [19, 46],
             popupAnchor: [0, -46],
           })
@@ -136,18 +156,18 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
         }
       });
     });
-  }, [selectedId]);
+  }, [selectedId, businesses]);
 
-  // Add new markers if businesses list changes
+  // Add new markers if businesses list changes; fit bounds on first load
   useEffect(() => {
     if (!mapInstanceRef.current) return;
     import('leaflet').then((L) => {
       validBusinesses.forEach((biz) => {
         if (!markersRef.current.has(biz.id)) {
           const icon = L.divIcon({
-            html: towTruckSVG(biz.id === selectedId),
+            html: towTruckSVG(biz.id === selectedId, biz.totalQuote),
             className: 'tow-marker',
-            iconSize: [38, 46],
+            iconSize: [38, 56],
             iconAnchor: [19, 46],
             popupAnchor: [0, -46],
           });
@@ -157,6 +177,13 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
           markersRef.current.set(biz.id, marker);
         }
       });
+
+      // Fit to all markers the first time data arrives
+      if (!hasFitBoundsRef.current && validBusinesses.length > 1) {
+        const latlngs = validBusinesses.map((b) => [b.lat!, b.lng!] as [number, number]);
+        mapInstanceRef.current.fitBounds(L.latLngBounds(latlngs), { padding: [60, 60] });
+        hasFitBoundsRef.current = true;
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [businesses]);

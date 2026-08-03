@@ -123,7 +123,8 @@ export default function MapDashboard() {
                 setCityFilter(e.target.value);
                 setSelectedBusiness(null);
               }}
-              className="px-3 py-1.5 rounded-lg bg-white/8 border border-white/10 text-xs text-white focus:outline-none focus:border-amber-500/50 cursor-pointer"
+              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white focus:outline-none focus:border-amber-500/50 cursor-pointer"
+              style={{ background: '#1e2d42' }}
             >
               <option value="all">All Cities ({businesses.length})</option>
               {cities.map((city) => {
