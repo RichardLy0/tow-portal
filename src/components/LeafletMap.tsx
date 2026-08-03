@@ -112,7 +112,10 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
           popupAnchor: [0, -57],
         });
 
-        const marker = L.marker([biz.lat!, biz.lng!], { icon });
+        const marker = L.marker([biz.lat!, biz.lng!], {
+          icon,
+          zIndexOffset: biz.totalQuote !== null ? 1000 : 0,
+        });
         marker.on('click', () => onMarkerClick(biz));
         marker.addTo(map);
         markersRef.current.set(biz.id, marker);
@@ -172,7 +175,10 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
             iconAnchor: [28, 57],
             popupAnchor: [0, -57],
           });
-          const marker = L.marker([biz.lat!, biz.lng!], { icon });
+          const marker = L.marker([biz.lat!, biz.lng!], {
+            icon,
+            zIndexOffset: biz.totalQuote !== null ? 1000 : 0,
+          });
           marker.on('click', () => onMarkerClick(biz));
           marker.addTo(mapInstanceRef.current);
           markersRef.current.set(biz.id, marker);

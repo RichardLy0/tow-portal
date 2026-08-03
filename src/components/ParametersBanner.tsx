@@ -3,7 +3,10 @@
 import { useState } from 'react';
 
 export default function ParametersBanner() {
-  const [collapsed, setCollapsed] = useState(false);
+  // Collapsed by default on mobile screens
+  const [collapsed, setCollapsed] = useState(
+    typeof window !== 'undefined' && window.innerWidth < 768
+  );
 
   return (
     <div

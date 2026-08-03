@@ -52,7 +52,9 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
         }}
       >
         {business && (
-          <div className="h-full flex flex-col overflow-hidden">
+          <div className="h-full flex flex-col overflow-y-auto overscroll-contain"
+            style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+          >
             {/* Panel header */}
             <div className="px-6 pt-6 pb-4 border-b border-white/8 flex-shrink-0">
               <div className="flex items-start justify-between gap-4">
@@ -75,7 +77,8 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
                 </div>
                 <button
                   onClick={onClose}
-                  className="flex-shrink-0 w-8 h-8 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                  className="flex-shrink-0 w-10 h-10 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                  style={{ touchAction: 'manipulation' }}
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
