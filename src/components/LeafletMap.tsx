@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Business } from '@/types';
 
 interface LeafletMapProps {
@@ -59,6 +59,8 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markersRef = useRef<Map<string, any>>(new Map());
   const hasFitBoundsRef = useRef(false);
+  // Flips to true once Leaflet finishes async init, so dependent effects re-run
+  const [mapReady, setMapReady] = useState(false);
 
   const validBusinesses = businesses.filter(
     (b) => b.lat !== null && b.lng !== null
@@ -88,6 +90,7 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
       });
 
       mapInstanceRef.current = map;
+      setMapReady(true);
 
       // Dark tile layer from Carto
       L.tileLayer(
@@ -134,6 +137,7 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
         mapInstanceRef.current = null;
         markersRef.current.clear();
         hasFitBoundsRef.current = false;
+        setMapReady(false);
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,7 +197,7 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [businesses]);
+  }, [businesses, mapReady]);
 
   return (
     <div
