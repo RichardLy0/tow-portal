@@ -25,20 +25,36 @@ const LeafletMap = dynamic(() => import('./LeafletMap'), {
 
 type LoadState = 'idle' | 'loading' | 'success' | 'error';
 
+interface Session {
+  isAdmin: boolean;
+  city: string | null;
+}
+
 export default function MapDashboard() {
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [loadState, setLoadState] = useState<LoadState>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(null);
   const [cityFilter, setCityFilter] = useState<string>('all');
+  const [session, setSession] = useState<Session | null>(null);
   // Mobile-only drawer states
   const [mobileParamsOpen, setMobileParamsOpen] = useState(false);
   const [mobileStatsOpen, setMobileStatsOpen] = useState(false);
   const router = useRouter();
 
+  // Load session first, then businesses
   useEffect(() => {
     setLoadState('loading');
-    fetch('/api/businesses')
+    fetch('/api/session')
+      .then((r) => r.json())
+      .then((s: Session) => {
+        setSession(s);
+        // For client accounts, pre-set the city filter
+        if (!s.isAdmin && s.city) {
+          setCityFilter(s.city);
+        }
+        return fetch('/api/businesses');
+      })
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json() as Promise<Business[]>;
@@ -70,13 +86,16 @@ export default function MapDashboard() {
     setSelectedBusiness(null);
   }, []);
 
+  const isAdmin = session?.isAdmin ?? true;
   const cities = Array.from(new Set(businesses.map((b) => b.cityState))).filter(Boolean).sort();
-  const filteredBusinesses = cityFilter === 'all'
-    ? businesses
-    : businesses.filter((b) => b.cityState === cityFilter);
+  const filteredBusinesses = (!isAdmin && session?.city)
+    ? businesses.filter((b) => b.cityState === session.city)
+    : cityFilter === 'all'
+      ? businesses
+      : businesses.filter((b) => b.cityState === cityFilter);
   const validCount = filteredBusinesses.filter((b) => b.lat !== null).length;
   const totalCount = filteredBusinesses.length;
-  const hasCitySelected = cityFilter !== 'all';
+  const hasCitySelected = !isAdmin || cityFilter !== 'all';
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[#060d1a]">
@@ -114,7 +133,7 @@ export default function MapDashboard() {
               </span>
             </div>
           )}
-          {cities.length > 1 && (
+          {cities.length > 1 && isAdmin && (
             <select
               value={cityFilter}
               onChange={(e) => { setCityFilter(e.target.value); setSelectedBusiness(null); }}
@@ -159,8 +178,8 @@ export default function MapDashboard() {
         </div>
         <p className="text-sm font-bold text-white flex-shrink-0">Tow Deputy</p>
 
-        {/* City dropdown — takes remaining space */}
-        {cities.length > 1 && (
+        {/* City dropdown — only for admin, takes remaining space */}
+        {cities.length > 1 && isAdmin && (
           <select
             value={cityFilter}
             onChange={(e) => { setCityFilter(e.target.value); setSelectedBusiness(null); setMobileStatsOpen(false); }}

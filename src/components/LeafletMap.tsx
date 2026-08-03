@@ -58,7 +58,6 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
   const mapInstanceRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markersRef = useRef<Map<string, any>>(new Map());
-  const hasFitBoundsRef = useRef(false);
   // Flips to true once Leaflet finishes async init, so dependent effects re-run
   const [mapReady, setMapReady] = useState(false);
 
@@ -136,7 +135,6 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
         markersRef.current.clear();
-        hasFitBoundsRef.current = false;
         setMapReady(false);
       }
     };
@@ -166,10 +164,20 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
     });
   }, [selectedId, businesses]);
 
-  // Add new markers if businesses list changes; fit bounds on first load
+  // Add new markers if businesses list changes; remove stale ones; fit bounds
   useEffect(() => {
     if (!mapInstanceRef.current) return;
     import('leaflet').then((L) => {
+      // Remove markers no longer in the filtered list
+      const currentIds = new Set(validBusinesses.map((b) => b.id));
+      markersRef.current.forEach((marker, id) => {
+        if (!currentIds.has(id)) {
+          marker.remove();
+          markersRef.current.delete(id);
+        }
+      });
+
+      // Add any new markers
       validBusinesses.forEach((biz) => {
         if (!markersRef.current.has(biz.id)) {
           const icon = L.divIcon({
@@ -189,11 +197,14 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
         }
       });
 
-      // Fit to all markers the first time data arrives
-      if (!hasFitBoundsRef.current && validBusinesses.length > 1) {
+      // Fit bounds whenever the businesses list is populated (initial load or city change)
+      if (validBusinesses.length > 1) {
         const latlngs = validBusinesses.map((b) => [b.lat!, b.lng!] as [number, number]);
         mapInstanceRef.current.fitBounds(L.latLngBounds(latlngs), { padding: [60, 60] });
-        hasFitBoundsRef.current = true;
+      } else if (validBusinesses.length === 1) {
+        mapInstanceRef.current.setView(
+          [validBusinesses[0].lat!, validBusinesses[0].lng!], 13
+        );
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
