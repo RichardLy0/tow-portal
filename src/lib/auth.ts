@@ -20,15 +20,15 @@ export const CREDENTIALS: Record<string, string> = {
   // ── Admin ──────────────────────────────────────────────────────────────
   TowData2026: 'admin',
 
-  // ── Client accounts (uncomment & set passwords before sharing) ─────────
-  // 'BakersfieldClient2026': 'Bakersfield, CA',
-  // 'CharlestonClient2026': 'Charleston, WV',
-  // 'CharlotteClient2026': 'Charlotte, NC',
-  // 'LaredoClient2026': 'Laredo, TX',
-  // 'MaconClient2026': 'Macon, GA',
-  // 'MilwaukeeClient2026': 'Milwaukee, WI',
-  // 'PhoenixClient2026': 'Phoenix, AZ',
-  // 'StPaulClient2026': 'St. Paul, MN',
+  // ── Client accounts ────────────────────────────────────────────────────
+  'Bak#Tow!9241': 'Bakersfield, CA',
+  'Chs#Tow!5837': 'Charleston, WV',
+  'Clt#Tow!7463': 'Charlotte, NC',
+  'Lrd#Tow!2058': 'Laredo, TX',
+  'Mac#Tow!6714': 'Macon, GA',
+  'Mil#Tow!3892': 'Milwaukee, WI',
+  'Phx#Tow!1547': 'Phoenix, AZ',
+  'Stp#Tow!8326': 'St. Paul, MN',
 };
 
 /** Returns 'admin', a city string, or null if the password is wrong. */
