@@ -3,15 +3,10 @@
 import { useState } from 'react';
 
 export default function ParametersBanner() {
-  // Collapsed by default on mobile screens
-  const [collapsed, setCollapsed] = useState(
-    typeof window !== 'undefined' && window.innerWidth < 768
-  );
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div
-      className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] w-full max-w-3xl px-4 transition-all duration-300"
-    >
+    <div className="w-full transition-all duration-300">
       <div
         className="rounded-2xl border border-amber-500/20 overflow-hidden"
         style={{

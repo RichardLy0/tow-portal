@@ -6,6 +6,8 @@ import type { Business } from '@/types';
 interface CitySummaryPanelProps {
   city: string;
   businesses: Business[];
+  /** When true, renders without absolute positioning (for use inside a positioned parent) */
+  inline?: boolean;
 }
 
 interface StatResult {
@@ -19,19 +21,14 @@ function calcStats(values: (number | null)[]): StatResult | null {
   const valid = values.filter((v): v is number => v !== null);
   if (valid.length === 0) return null;
   const sum = valid.reduce((a, b) => a + b, 0);
-  return {
-    avg: sum / valid.length,
-    min: Math.min(...valid),
-    max: Math.max(...valid),
-    n: valid.length,
-  };
+  return { avg: sum / valid.length, min: Math.min(...valid), max: Math.max(...valid), n: valid.length };
 }
 
 function fmt(n: number, decimals = 0): string {
   return `$${n.toFixed(decimals)}`;
 }
 
-export default function CitySummaryPanel({ city, businesses }: CitySummaryPanelProps) {
+export default function CitySummaryPanel({ city, businesses, inline = false }: CitySummaryPanelProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   const quoteStats = calcStats(businesses.map((b) => b.totalQuote));
@@ -40,11 +37,12 @@ export default function CitySummaryPanel({ city, businesses }: CitySummaryPanelP
 
   if (!quoteStats && !hookupStats && !mileStats) return null;
 
+  const positionClass = inline
+    ? 'w-full'
+    : 'absolute bottom-4 left-4 z-[1001] w-[calc(100vw-2rem)] max-w-sm';
+
   return (
-    <div
-      className="absolute bottom-4 left-4 z-[1001] w-[calc(100vw-2rem)] max-w-sm transition-all duration-300"
-      style={{ touchAction: 'none' }}
-    >
+    <div className={`${positionClass} transition-all duration-300`}>
       <div
         className="rounded-2xl border border-amber-500/25 overflow-hidden"
         style={{
@@ -102,12 +100,8 @@ function StatCard({ label, stat, decimals }: { label: string; stat: StatResult |
   return (
     <div className="rounded-xl p-3 bg-white/4 border border-white/8">
       <p className="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2 leading-tight">{label}</p>
-
-      {/* Average — hero */}
       <p className="text-lg font-black text-amber-400 leading-none">{fmt(stat.avg, decimals)}</p>
       <p className="text-xs text-slate-500 mb-2">avg · n={stat.n}</p>
-
-      {/* Min / Max */}
       <div className="flex justify-between gap-1 text-xs">
         <div className="text-center flex-1">
           <p className="text-slate-500 leading-none mb-0.5">Min</p>
