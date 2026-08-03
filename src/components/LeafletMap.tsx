@@ -16,32 +16,33 @@ function towTruckSVG(selected: boolean, price?: number | null): string {
   const priceLabel =
     price != null
       ? `<div style="
-          margin-top:4px;
-          background:rgba(6,13,26,0.88);
-          border:1px solid ${selected ? '#ef4444' : '#f59e0b'};
-          border-radius:6px;
-          padding:2px 6px;
-          font-size:11px;
-          font-weight:700;
+          margin-top:5px;
+          background:rgba(6,13,26,0.92);
+          border:2px solid ${selected ? '#ef4444' : '#f59e0b'};
+          border-radius:8px;
+          padding:3px 9px;
+          font-size:22px;
+          font-weight:800;
           color:${selected ? '#ef4444' : '#f59e0b'};
           white-space:nowrap;
-          line-height:1.4;
-          box-shadow:0 2px 6px rgba(0,0,0,0.5);
+          line-height:1.3;
+          box-shadow:0 3px 10px rgba(0,0,0,0.6);
+          letter-spacing:-0.5px;
         ">$${price.toFixed(0)}</div>`
       : '';
   return `
     <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
       <div style="
-        width:38px;height:38px;
+        width:57px;height:57px;
         background:${bg};
-        border:3px solid ${border};
+        border:4px solid ${border};
         border-radius:50% 50% 50% 0;
         transform:rotate(-45deg);
         display:flex;align-items:center;justify-content:center;
-        box-shadow:0 4px 16px rgba(0,0,0,0.45);
+        box-shadow:0 6px 20px rgba(0,0,0,0.5);
         transition:background 0.15s ease;
       ">
-        <svg style="transform:rotate(45deg);width:18px;height:18px;" viewBox="0 0 20 20" fill="${border}">
+        <svg style="transform:rotate(45deg);width:27px;height:27px;" viewBox="0 0 20 20" fill="${border}">
           <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
           <path d="M3 4a1 1 0 00-1 1v7a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1v-1h3a1 1 0 00.8-.4l2-2.667A1 1 0 0017 7h-3V5a1 1 0 00-1-1H3z"/>
         </svg>
@@ -106,9 +107,9 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
         const icon = L.divIcon({
           html: towTruckSVG(false, biz.totalQuote),
           className: 'tow-marker',
-          iconSize: [38, 56],
-          iconAnchor: [19, 46],
-          popupAnchor: [0, -46],
+          iconSize: [57, 90],
+          iconAnchor: [28, 57],
+          popupAnchor: [0, -57],
         });
 
         const marker = L.marker([biz.lat!, biz.lng!], { icon });
@@ -146,9 +147,9 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
           L.divIcon({
             html: towTruckSVG(isSelected, biz?.totalQuote),
             className: 'tow-marker',
-            iconSize: [38, 56],
-            iconAnchor: [19, 46],
-            popupAnchor: [0, -46],
+            iconSize: [57, 90],
+            iconAnchor: [28, 57],
+            popupAnchor: [0, -57],
           })
         );
         if (isSelected && mapInstanceRef.current) {
@@ -167,9 +168,9 @@ export default function LeafletMap({ businesses, selectedId, onMarkerClick }: Le
           const icon = L.divIcon({
             html: towTruckSVG(biz.id === selectedId, biz.totalQuote),
             className: 'tow-marker',
-            iconSize: [38, 56],
-            iconAnchor: [19, 46],
-            popupAnchor: [0, -46],
+            iconSize: [57, 90],
+            iconAnchor: [28, 57],
+            popupAnchor: [0, -57],
           });
           const marker = L.marker([biz.lat!, biz.lng!], { icon });
           marker.on('click', () => onMarkerClick(biz));

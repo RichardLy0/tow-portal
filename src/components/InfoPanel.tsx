@@ -12,6 +12,17 @@ function fmt(value: number | null, prefix = '$'): string {
   return `${prefix}${value.toFixed(2)}`;
 }
 
+function fmtDate(raw: string): string {
+  if (!raw) return raw;
+  // Normalize separator variants: dots, dashes, slashes → parts
+  const parts = raw.trim().split(/[.\-\/]/);
+  if (parts.length === 3) {
+    const [m, d, y] = parts;
+    return `${m.padStart(2, '0')}/${d.padStart(2, '0')}/${y}`;
+  }
+  return raw;
+}
+
 export default function InfoPanel({ business, onClose }: InfoPanelProps) {
   const visible = business !== null;
 
@@ -140,8 +151,16 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
             {/* Date called footer */}
             {business.dateCalled && (
               <div className="mt-auto px-6 py-4 border-t border-white/6 flex-shrink-0">
-                <p className="text-xs text-slate-600 text-center">
-                  Quote collected on <span className="text-slate-400">{business.dateCalled}</span>
+                <p className="text-sm text-slate-300 text-center font-medium"
+                  style={{
+                    background: 'rgba(245,158,11,0.08)',
+                    border: '1px solid rgba(245,158,11,0.25)',
+                    borderRadius: '10px',
+                    padding: '8px 12px',
+                  }}
+                >
+                  📅 Quote collected on{' '}
+                  <span className="text-amber-400 font-bold">{fmtDate(business.dateCalled)}</span>
                 </p>
               </div>
             )}
