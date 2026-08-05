@@ -98,7 +98,7 @@ export default function MapDashboard() {
   const hasCitySelected = !isAdmin || cityFilter !== 'all';
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-[#060d1a]">
+    <div className="relative w-full overflow-hidden bg-[#060d1a]" style={{ height: '100dvh' }}>
 
       {/* ── DESKTOP HEADER ─────────────────────────────────────────── */}
       <header
@@ -241,7 +241,7 @@ export default function MapDashboard() {
           style={{
             background: 'rgba(6,13,26,0.95)',
             borderTop: '1px solid rgba(255,255,255,0.08)',
-            paddingBottom: 'max(8px, env(safe-area-inset-bottom))',
+            paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
           }}
         >
           {/* Mapped count pill */}
@@ -347,6 +347,28 @@ export default function MapDashboard() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* ── FLOATING CLOSE BUTTON (mobile only, above all layers) ───── */}
+      {selectedBusiness && (
+        <button
+          onClick={handlePanelClose}
+          className="md:hidden fixed z-[1010] flex items-center justify-center rounded-full shadow-lg"
+          style={{
+            top: 'calc(env(safe-area-inset-top) + 14px)',
+            right: '14px',
+            width: '44px',
+            height: '44px',
+            background: 'rgba(239,68,68,0.2)',
+            border: '1.5px solid rgba(239,68,68,0.6)',
+            touchAction: 'manipulation',
+          }}
+          aria-label="Close"
+        >
+          <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       )}
 
       {/* ── INFO PANEL (right slide-in on both) ─────────────────────── */}

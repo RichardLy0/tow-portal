@@ -39,12 +39,13 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
       {/* Panel */}
       <div
         className={`
-          absolute top-0 right-0 bottom-0 z-[1000]
-          w-full md:w-96
+          absolute right-0 bottom-0 z-[1000]
+          w-full md:w-96 md:top-0
           transition-transform duration-300 ease-in-out
           ${visible ? 'translate-x-0' : 'translate-x-full'}
         `}
         style={{
+          top: 'calc(env(safe-area-inset-top) + 56px)',
           background: 'linear-gradient(180deg, rgba(20,32,52,0.99) 0%, rgba(12,18,32,0.99) 100%)',
           backdropFilter: 'blur(24px)',
           borderLeft: '1px solid rgba(245,158,11,0.15)',
@@ -55,10 +56,8 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
           <div className="h-full flex flex-col overflow-y-auto overscroll-contain"
             style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
           >
-            {/* Panel header — sticky so close button is always reachable */}
-            <div className="px-6 pt-6 pb-4 border-b border-white/8 flex-shrink-0 sticky top-0 z-10"
-              style={{ background: 'linear-gradient(180deg, rgba(20,32,52,1) 0%, rgba(20,32,52,0.98) 100%)' }}
-            >
+            {/* Panel header */}
+            <div className="px-6 pt-6 pb-4 border-b border-white/8 flex-shrink-0">
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 mb-1">
