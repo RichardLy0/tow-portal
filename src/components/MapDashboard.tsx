@@ -164,7 +164,8 @@ export default function MapDashboard() {
       <header
         className="md:hidden absolute top-0 left-0 right-0 z-[1001] flex items-center px-3 gap-2"
         style={{
-          height: '56px',
+          paddingTop: 'max(12px, env(safe-area-inset-top))',
+          paddingBottom: '10px',
           background: 'rgba(6,13,26,0.97)',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
         }}
@@ -251,23 +252,21 @@ export default function MapDashboard() {
 
           <div className="flex-1" />
 
-          {/* Stats toggle — only when city selected */}
-          {hasCitySelected && (
-            <button
-              onClick={() => { setMobileStatsOpen(!mobileStatsOpen); setMobileParamsOpen(false); }}
-              className={`flex items-center gap-1.5 h-9 px-3 rounded-lg border text-xs font-medium transition-all ${
-                mobileStatsOpen
-                  ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
-                  : 'bg-white/5 border-white/10 text-slate-400'
-              }`}
-              style={{ touchAction: 'manipulation' }}
-            >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-              Stats
-            </button>
-          )}
+          {/* Stats toggle — always visible when data is loaded */}
+          <button
+            onClick={() => { setMobileStatsOpen(!mobileStatsOpen); setMobileParamsOpen(false); }}
+            className={`flex items-center gap-1.5 h-9 px-3 rounded-lg border text-xs font-medium transition-all ${
+              mobileStatsOpen
+                ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
+                : 'bg-white/5 border-white/10 text-slate-400'
+            }`}
+            style={{ touchAction: 'manipulation' }}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Stats
+          </button>
 
           {/* Parameters toggle */}
           <button
@@ -297,13 +296,17 @@ export default function MapDashboard() {
         </div>
       )}
 
-      {/* ── MOBILE: Stats drawer (slides up from bottom bar) ─────────── */}
-      {loadState === 'success' && hasCitySelected && mobileStatsOpen && (
+      {/* ── MOBILE: Stats drawer ─────────────────────── */}
+      {loadState === 'success' && mobileStatsOpen && (
         <div
           className="md:hidden absolute left-0 right-0 z-[1000] px-3 pb-2"
           style={{ bottom: 'calc(56px + max(8px, env(safe-area-inset-bottom)))' }}
         >
-          <CitySummaryPanel city={cityFilter} businesses={filteredBusinesses} inline />
+          <CitySummaryPanel
+            city={hasCitySelected ? cityFilter : 'All Cities'}
+            businesses={filteredBusinesses}
+            inline
+          />
         </div>
       )}
 

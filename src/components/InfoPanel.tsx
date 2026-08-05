@@ -55,8 +55,10 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
           <div className="h-full flex flex-col overflow-y-auto overscroll-contain"
             style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
           >
-            {/* Panel header */}
-            <div className="px-6 pt-6 pb-4 border-b border-white/8 flex-shrink-0">
+            {/* Panel header — sticky so close button is always reachable */}
+            <div className="px-6 pt-6 pb-4 border-b border-white/8 flex-shrink-0 sticky top-0 z-10"
+              style={{ background: 'linear-gradient(180deg, rgba(20,32,52,1) 0%, rgba(20,32,52,0.98) 100%)' }}
+            >
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 mb-1">
@@ -77,11 +79,12 @@ export default function InfoPanel({ business, onClose }: InfoPanelProps) {
                 </div>
                 <button
                   onClick={onClose}
-                  className="flex-shrink-0 w-10 h-10 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-slate-400 hover:text-white transition-all"
-                  style={{ touchAction: 'manipulation' }}
+                  className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition-all"
+                  style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.4)', touchAction: 'manipulation' }}
+                  aria-label="Close"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
