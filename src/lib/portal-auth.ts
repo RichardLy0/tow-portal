@@ -5,7 +5,8 @@ import { cookies } from 'next/headers';
 import type { NextResponse } from 'next/server';
 import { validateTowDeputySession } from '@/lib/tow-deputy-client';
 
-export const PORTAL_TOKEN_COOKIE = 'td_portal_session';
+// This opaque Tow Deputy session token is intentionally only available to this host's server.
+export const PORTAL_TOKEN_COOKIE = 'pricing_portal';
 export const PORTAL_STATE_COOKIE = 'td_portal_state';
 
 const STATE_TTL_SECONDS = 5 * 60;
@@ -60,6 +61,4 @@ export function clearPortalCookies(response: NextResponse): void {
   const clear = { httpOnly: true, secure: true, sameSite: 'lax' as const, path: '/', maxAge: 0 };
   response.cookies.set(PORTAL_TOKEN_COOKIE, '', clear);
   response.cookies.set(PORTAL_STATE_COOKIE, '', clear);
-  response.cookies.set('tow_portal_auth', '', clear);
-  response.cookies.set('tow_portal_role', '', clear);
 }
