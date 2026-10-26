@@ -33,6 +33,26 @@ async function postForm(path: string, values: Record<string, string>): Promise<R
   });
 }
 
+export class TowDeputyBillingError extends Error {
+  constructor(public readonly status: number) {
+    super('Tow Deputy billing request failed.');
+  }
+}
+
+/**
+ * Server-only adapter for the frozen pricing billing contract.  It never
+ * forwards browser cookies, query parameters, or browser authorization.
+ */
+export async function postPricingBilling(
+  path: '/api/pricing/portal/billing/offers' | '/api/pricing/portal/billing/checkout' | '/api/pricing/portal/billing/access' | '/api/pricing/portal/billing/portal',
+  sessionToken: string,
+  values: Record<string, string> = {}
+): Promise<unknown> {
+  const response = await postForm(path, { session_token: sessionToken, ...values });
+  if (!response.ok) throw new TowDeputyBillingError(response.status);
+  return response.json() as Promise<unknown>;
+}
+
 export function getTowDeputyAuthorizeUrl(state: string): string {
   if (!/^[A-Za-z0-9_-]{32,128}$/.test(state)) throw new Error('Invalid authorization state.');
   const url = new URL('/api/pricing/portal/authorize', getOrigin());
