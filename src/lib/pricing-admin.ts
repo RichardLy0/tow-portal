@@ -23,8 +23,8 @@ export class AdminRequestError extends Error {
   constructor(public readonly status: number) { super('Pricing administration request failed.'); }
 }
 
-export function adminErrorStatus(error: unknown): 401 | 403 | 409 | 502 {
+export function adminErrorStatus(error: unknown): 401 | 403 | 409 | 502 | 503 {
   if (error instanceof AdminRequestError && (error.status === 401 || error.status === 403)) return error.status;
-  if (error instanceof TowDeputyAdminError && (error.status === 401 || error.status === 403 || error.status === 409)) return error.status;
+  if (error instanceof TowDeputyAdminError && (error.status === 401 || error.status === 403 || error.status === 409 || error.status === 503)) return error.status;
   return 502;
 }
