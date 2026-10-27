@@ -18,17 +18,22 @@ function validatedHttpsOrigin(value: string | undefined, name: string): string {
   try {
     const url = new URL(value);
     if (
+      // Do not canonicalize configuration. The raw value itself must be the
+      // canonical HTTPS scheme plus lowercase host, with no port or suffix.
+      value !== `https://${url.hostname}` ||
       url.protocol !== 'https:' ||
       url.username ||
       url.password ||
       url.hostname.includes('*') ||
+      !url.hostname ||
+      url.port ||
       url.pathname !== '/' ||
       url.search ||
       url.hash
     ) {
       throw new Error();
     }
-    return url.origin;
+    return value;
   } catch {
     throw new Error(`${name} must be an exact HTTPS origin.`);
   }

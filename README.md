@@ -11,11 +11,25 @@ Every deployment requires these non-secret configuration values:
   `https://towdeputy.com`).
 
 Both origins are required in every tier; there are no defaults and `NODE_ENV`
-does not affect them. Origins may use only HTTPS and the root path (`/`); they
-must not contain HTTP, credentials, a non-root path, query, fragment, wildcard,
-or malformed URL. Authentication callbacks are always derived as
-`/auth/tow-deputy/callback` from `PORTAL_ORIGIN`, and admin mutations require an
-`Origin` that exactly matches it.
+does not affect them. Each value must be the raw canonical spelling
+`https://lowercase-host` (for example, `https://pricing.towdeputy.com`). The
+application rejects, rather than normalizes, uppercase schemes or hostnames,
+an explicit port (including `:443`), a trailing slash, path, query, fragment,
+credentials, wildcard, or malformed URL. Authentication callbacks are always
+derived as the fixed `/auth/tow-deputy/callback` path from `PORTAL_ORIGIN`, and
+admin mutations require an `Origin` that exactly matches it.
+
+Cookie and authorization settings remain host-only: authentication and state
+cookies are `Secure`, `HttpOnly`, `SameSite=Lax`, and scoped to `/` without a
+`Domain` attribute. Configuration validation failures fail closed; they do not
+fall back to request headers or environment-specific defaults.
+
+## Verification
+
+This repository has no configured test runner or test script, so no automated
+origin-validation tests were added without introducing dependencies. Validate
+the configured deployment values with the build, typecheck, and lint commands
+using non-secret staging configuration.
 
 First, run the development server:
 
