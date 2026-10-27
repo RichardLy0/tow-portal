@@ -6,5 +6,5 @@ export default async function DashboardPage() {
   const session = await getPortalSession();
   if (!session) redirect('/login');
 
-  return <PricingIntelligence />;
+  return <PricingIntelligence isAdmin={session.role === 'admin'} />;
 }

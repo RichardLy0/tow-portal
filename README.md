@@ -2,6 +2,21 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Every deployment requires these non-secret configuration values:
+
+- `APP_ENV`: one of `development`, `staging`, or `production`.
+- `PORTAL_ORIGIN`: this portal's exact absolute HTTPS origin (for example,
+  `https://pricing.towdeputy.com`).
+- `TOW_DEPUTY_ORIGIN`: Tow Deputy's exact absolute HTTPS origin (for example,
+  `https://towdeputy.com`).
+
+Both origins are required in every tier; there are no defaults and `NODE_ENV`
+does not affect them. Origins may use only HTTPS and the root path (`/`); they
+must not contain HTTP, credentials, a non-root path, query, fragment, wildcard,
+or malformed URL. Authentication callbacks are always derived as
+`/auth/tow-deputy/callback` from `PORTAL_ORIGIN`, and admin mutations require an
+`Origin` that exactly matches it.
+
 First, run the development server:
 
 ```bash
