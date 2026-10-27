@@ -1,17 +1,15 @@
 import 'server-only';
 
+import { getPortalOrigin, getTowDeputyOrigin } from '@/lib/origins';
+
 const CLIENT_ID = 'pricing-portal';
-const CALLBACK_URL = 'https://pricing.towdeputy.com/auth/tow-deputy/callback';
-const ALLOWED_TD_ORIGINS = new Set(['https://towdeputy.com']);
 
 type ValidRole = 'data_user' | 'merchant' | 'admin';
 
 type ValidatedSession = { userId: string; role: ValidRole };
 
-function getOrigin(): string {
-  const origin = process.env.TOW_DEPUTY_ORIGIN;
-  if (!origin || !ALLOWED_TD_ORIGINS.has(origin)) throw new Error('Tow Deputy origin is not configured.');
-  return origin;
+function getCallbackUrl(): string {
+  return new URL('/auth/tow-deputy/callback', getPortalOrigin()).toString();
 }
 
 function getAuthorizationHeader(): string {
@@ -25,7 +23,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 async function postForm(path: string, values: Record<string, string>): Promise<Response> {
-  return fetch(`${getOrigin()}${path}`, {
+  return fetch(`${getTowDeputyOrigin()}${path}`, {
     method: 'POST',
     headers: { Authorization: getAuthorizationHeader(), 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(values),
@@ -37,6 +35,38 @@ export class TowDeputyBillingError extends Error {
   constructor(public readonly status: number) {
     super('Tow Deputy billing request failed.');
   }
+}
+
+export type PricingAdminOperation =
+  | 'markets/list' | 'markets/create' | 'markets/update' | 'markets/archive'
+  | 'observations/list' | 'observations/markets/replace'
+  | 'modeled-prices/list' | 'modeled-prices/read' | 'modeled-prices/markets/replace';
+
+const PRICING_ADMIN_OPERATIONS = new Set<PricingAdminOperation>([
+  'markets/list', 'markets/create', 'markets/update', 'markets/archive',
+  'observations/list', 'observations/markets/replace',
+  'modeled-prices/list', 'modeled-prices/read', 'modeled-prices/markets/replace',
+]);
+
+export class TowDeputyAdminError extends Error {
+  constructor(public readonly status: number) {
+    super('Tow Deputy admin request failed.');
+  }
+}
+
+/** Fixed-contract server adapter. The operation is allowlisted; no browser URL or credential is forwarded. */
+export async function postPricingAdmin(
+  operation: PricingAdminOperation,
+  sessionToken: string,
+  values: URLSearchParams = new URLSearchParams(),
+): Promise<unknown> {
+  if (!PRICING_ADMIN_OPERATIONS.has(operation)) throw new Error('Unsupported pricing admin operation.');
+  values.set('session_token', sessionToken);
+  const response = await fetch(`${getTowDeputyOrigin()}/api/pricing/portal/admin/${operation}`, {
+    method: 'POST', headers: { Authorization: getAuthorizationHeader(), 'Content-Type': 'application/x-www-form-urlencoded' }, body: values, cache: 'no-store',
+  });
+  if (!response.ok) throw new TowDeputyAdminError(response.status);
+  return response.json() as Promise<unknown>;
 }
 
 /**
@@ -55,9 +85,9 @@ export async function postPricingBilling(
 
 export function getTowDeputyAuthorizeUrl(state: string): string {
   if (!/^[A-Za-z0-9_-]{32,128}$/.test(state)) throw new Error('Invalid authorization state.');
-  const url = new URL('/api/pricing/portal/authorize', getOrigin());
+  const url = new URL('/api/pricing/portal/authorize', getTowDeputyOrigin());
   url.searchParams.set('client_id', CLIENT_ID);
-  url.searchParams.set('redirect_uri', CALLBACK_URL);
+  url.searchParams.set('redirect_uri', getCallbackUrl());
   url.searchParams.set('state', state);
   return url.toString();
 }
@@ -65,7 +95,7 @@ export function getTowDeputyAuthorizeUrl(state: string): string {
 export async function exchangeTowDeputyCode(code: string): Promise<string | null> {
   if (!code || code.length > 2048) return null;
   try {
-    const response = await postForm('/api/pricing/portal/token', { code, redirect_uri: CALLBACK_URL });
+    const response = await postForm('/api/pricing/portal/token', { code, redirect_uri: getCallbackUrl() });
     if (!response.ok) return null;
     const body: unknown = await response.json();
     return isRecord(body) && typeof body.access_token === 'string' && body.access_token.length > 0

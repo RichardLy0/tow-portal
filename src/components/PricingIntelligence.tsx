@@ -35,7 +35,7 @@ async function getBillingData(key: 'offers' | 'access'): Promise<PricingOffer[] 
   return values;
 }
 
-export default function PricingIntelligence() {
+export default function PricingIntelligence({ isAdmin = false }: { isAdmin?: boolean }) {
   const [offers, setOffers] = useState<PricingOffer[]>([]);
   const [access, setAccess] = useState<PricingAccess[]>([]);
   const [loading, setLoading] = useState(true);
@@ -112,7 +112,7 @@ export default function PricingIntelligence() {
             <h1 className="mt-1 text-3xl font-bold">Pricing Intelligence</h1>
             <p className="mt-2 text-slate-300">Manage your currently entitled markets and purchase additional available markets.</p>
           </div>
-          <button type="button" onClick={() => void openBillingPortal()} disabled={busy !== null} className="rounded-lg border border-amber-400 px-4 py-2 font-semibold text-amber-300 disabled:opacity-50">
+           <button type="button" onClick={() => void openBillingPortal()} disabled={busy !== null} className="rounded-lg border border-amber-400 px-4 py-2 font-semibold text-amber-300 disabled:opacity-50">
             {busy === 'portal' ? 'Opening…' : 'Manage billing'}
           </button>
         </header>
@@ -125,6 +125,7 @@ export default function PricingIntelligence() {
             <button type="button" onClick={() => void refresh()} disabled={loading || busy !== null} className="text-sm font-semibold text-amber-300 underline disabled:opacity-50">
               {loading ? 'Refreshing…' : 'Refresh access'}
             </button>
+            {isAdmin && <a href="/admin/pricing" className="rounded-lg border border-white/20 px-4 py-2 font-semibold text-slate-100">Pricing admin</a>}
           </div>
            {!loading && activeAccess.length === 0 ? (
             <p className="mt-3 rounded-lg border border-white/10 bg-white/5 p-4 text-slate-300">No entitled markets are currently reported by Tow Deputy.</p>

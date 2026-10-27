@@ -2,6 +2,41 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Every deployment requires these non-secret configuration values:
+
+- `APP_ENV`: one of `development`, `staging`, or `production`.
+- `PORTAL_ORIGIN`: this portal's exact absolute HTTPS origin (for example,
+  `https://pricing.towdeputy.com`).
+- `TOW_DEPUTY_ORIGIN`: Tow Deputy's exact absolute HTTPS origin (for example,
+  `https://towdeputy.com`).
+
+Both origins are required in every tier; there are no defaults and `NODE_ENV`
+does not affect them. Each value must be the raw canonical HTTPS origin. The
+application rejects, rather than normalizes, uppercase schemes or hostnames,
+an explicit port (including `:443`), a trailing slash, path, query, fragment,
+credentials, wildcard, or malformed URL. Explicitly configured HTTPS
+`localhost`, IP-address, and trailing-dot hostname origins are deployment
+trust decisions, not user-supplied redirects. Authentication callbacks are
+always derived as the fixed `/auth/tow-deputy/callback` path from
+`PORTAL_ORIGIN`, and admin mutations require an `Origin` that exactly matches
+it.
+
+For staging and production, use canonical trusted origins. Tow Deputy must set
+`PRICING_PORTAL_ORIGIN` equal to this portal's `PORTAL_ORIGIN`. A stale tunnel
+URL or a mismatch between the two deployments will cause callback or origin
+validation to fail closed, so verify the pair before deploying.
+
+Cookie and authorization settings remain host-only: authentication and state
+cookies are `Secure`, `HttpOnly`, `SameSite=Lax`, and scoped to `/` without a
+`Domain` attribute. Configuration validation failures fail closed; they do not
+fall back to request headers or environment-specific defaults.
+
+## Verification
+
+This repository has no configured test runner or test script. Validate the
+configured deployment values with the build, typecheck, and lint commands using
+non-secret staging configuration.
+
 First, run the development server:
 
 ```bash
